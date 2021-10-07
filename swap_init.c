@@ -6,18 +6,17 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/05 16:46:59 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/07 16:10:28 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_adm	*list_init(t_dll *dll, int first)
+t_adm	*list_init(t_adm *adm, t_dll *dll, int first)
 {
-	t_adm	*adm;
-
 	adm = malloc(sizeof(*adm));
-	if (adm == NULL)
+	dll = malloc(sizeof(*dll));
+	if (adm == NULL || dll == NULL)
 		 return (0);
 	adm->head = dll;
 	adm->tail = dll;
@@ -42,7 +41,7 @@ void	list_inser(t_adm *adm, int add)
 	adm->head = new;
 }
 
-/* ===== Test Zone ===== 
+/* ===== Test Zone ===== */
 
 void	list_display(t_adm *adm)
 {
@@ -56,73 +55,73 @@ void	list_display(t_adm *adm)
 	i = 0;
 	k = 0;
 
-	printf("\n--- Liste Chaine simple ---\n\n");
+	printf(YELLOW"\n--- Liste Chaine simple ---\n\n");
 	while (i != 1)
 	{
-		printf("%d -> ", now->n);
+		printf(GREEN"%d -> ", now->n);
 		if (now->next == adm->head)
 			i = 1;
 		now = now->next;
 		k++;
 	}
-	printf("NULL\n\n");
+	printf(RED"NULL\n\n");
 
-	printf("--- Liste Chaine double ---\n\n");
+	printf(YELLOW"--- Liste Chaine Double ---\n\n");
 	i = 0;
-	printf("NULL -> ");
+	printf(RED"NULL -> ");
 	now = adm->head;
 	while (i != 1)
 	{
-		printf("%d -> ", now->n);
+		printf(GREEN"%d -> ", now->n);
 		if (now->next == adm->head)
 			i = 1;
 		now = now->next;
 	}
-	printf("NULL\n");
+	printf(RED"NULL\n");
 
 	i = 0;
-	printf("NULL -> ");
+	printf(RED"NULL -> ");
 	now = adm->tail;
 	while (i != 1)
 	{
-		printf("%d -> ", now->n);
+		printf(GREEN"%d -> ", now->n);
 		if (now->prev == adm->tail)
 			i = 1;
 		now = now->prev;
 	}
-	printf("NULL\n\n");
+	printf(RED"NULL\n\n");
 
-	printf("--- Liste Chaine double & circu ---\n\n");
+	printf(YELLOW"--- Liste Chaine Double & Circu ---\n\n");
 	i = 0;
-	printf("head/");
+	printf(CYAN"head:");
 	now = adm->head;
 	while (i != 3)
 	{
 		if (now == adm->tail)
-			printf("tail/");
-		printf("%d -> ", now->n);
+			printf(BLUE"tail:");
+		printf(GREEN"%d -> ", now->n);
 		if (now->next == adm->head)
 			i++;
 		now = now->next;
 		if (now == adm->head)
-			printf("head/");
+			printf(CYAN"head:");
 	}
-	printf("...\n");
+	printf(RED"...\n");
 
 	i = 0;
-	printf("tail/");
+	printf(BLUE"tail:");
 	now = adm->tail;
 	while (i != 3)
 	{
 		if (now == adm->head)
-			printf("head/");
-		printf("%d -> ", now->n);
+			printf(CYAN"head:");
+		printf(GREEN"%d -> ", now->n);
 		if (now->prev == adm->tail)
 			i++;
 		now = now->prev;
 		if (now == adm->tail)
-			printf("tail/");
+			printf(BLUE"tail:");
 	}
-	printf("...\n\n");
+	printf(RED"...\n\n");
 	return ;
-}*/
+}

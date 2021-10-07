@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 16:53:02 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/07 11:47:34 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/07 16:05:34 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <limits.h>
 
 # define RED "\033[1;31m"
 # define GREEN "\033[1;32m"
@@ -39,9 +40,11 @@ typedef struct s_adm
 	struct s_dll	*tail;
 }	t_adm;
 
-t_adm	*list_init(t_dll *dll, int first);
+t_adm	*list_init(t_adm *adm, t_dll *dll, int first);
 void	list_inser(t_adm *head, int add);
 void	list_display(t_adm *head);
+
 char	**ft_split(char *str, char *charset);
+long	ft_atoi(char *s);
 
 #endif

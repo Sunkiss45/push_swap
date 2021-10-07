@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/07 15:10:29 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/07 16:05:33 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,39 +37,47 @@ int	ft_checker_1(char *s, int x)
 	return (0);
 }
 
-int	one_arg(char *s)
+int	one_arg(char *s, t_adm *adm, t_dll *dll)
 {
 	char	**str;
 	int		i;
+	int		num;
 
-//	printf(RED"Si +1 -> %d\n", ft_checker_1(s, 1));
-//	printf(RED"Si =1 -> %d\n", ft_checker_1(s, 0));
 	if (ft_checker_1(s, 1))
 		return (1);
 	str = ft_split(s, " ");
 	if (str == NULL)
 		return (1);
-	i = 0;
+	num = ft_atoi(str[0]);
+	if (num > INT_MAX || num < INT_MIN)
+		return (1);
+	adm = list_init(adm, dll, num);
+	i = 1;
 	while (str[i])
 	{
-		printf(GREEN"[%s]\n", str[i]);
+		num = ft_atoi(str[i]);
+		if (num > INT_MAX || num < INT_MIN)
+			return(1);
+		list_inser(adm, num);
 		i++;
 	}
-	printf(YELLOW"(%d)\n", i);
+	list_display(adm);
 	return (0);
 }
 
 int	main(int ac, char **av)
 {
-//	t_dll	*dll;
-//	t_adm	*adm;
+	t_dll	*dll;
+	t_adm	*adm;
 	int		e;
 
+	dll = NULL;
+	adm = NULL;
 	e = 0;
 	if (ac <= 1)
 		e = 1;
 	else if (ac == 2)
-		e = one_arg(av[1]);
+		e = one_arg(av[1], adm, dll);
 	if (e)
 		write(2, "Error\n", 6);
 	return (0);
