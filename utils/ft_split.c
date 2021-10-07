@@ -6,11 +6,12 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 15:13:51 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/05 14:14:28 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/07 11:36:26 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "../push_swap.h"
 
 int	ft_is_from_charset(char c, char *charset)
 {

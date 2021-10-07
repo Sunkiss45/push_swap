@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 16:53:02 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/05 16:43:58 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/07 11:47:34 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+
+# define RED "\033[1;31m"
+# define GREEN "\033[1;32m"
+# define YELLOW "\033[1;33m"
+# define BLUE "\033[1;34m"
+# define PURPLE "\033[1;35m"
+# define CYAN "\033[1;36m"
+# define GREY "\033[1;37m"
+# define RESET "\033[0m"
 
 typedef struct s_dll
 {
@@ -33,5 +42,6 @@ typedef struct s_adm
 t_adm	*list_init(t_dll *dll, int first);
 void	list_inser(t_adm *head, int add);
 void	list_display(t_adm *head);
+char	**ft_split(char *str, char *charset);
 
 #endif
