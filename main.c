@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/08 16:09:06 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/08 16:41:36 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,23 @@ void	ft_free(t_adm *adm, char **str)
 	return ;
 }
 
+int	ft_free_error(t_adm *adm, char **str, int x)
+{
+	int	i;
+
+	i = -1;
+	if (x)
+		ft_free(adm, str);
+	else
+		if (str)
+		{
+			while (str[++i])
+				free(str[i]);
+			free(str);
+		}
+	return (1);
+}
+
 int	one_arg(char *s, t_adm *adm, t_dll *dll)
 {
 	char	**str;
@@ -69,14 +86,14 @@ int	one_arg(char *s, t_adm *adm, t_dll *dll)
 		return (1);
 	num = ft_atoi(str[0]);
 	if (num > INT_MAX || num < INT_MIN)
-		return (1);
+		return (ft_free_error(adm, str, 0));
 	adm = list_init(adm, dll, num);
 	i = 1;
 	while (str[i])
 	{
 		num = ft_atoi(str[i]);
 		if (num > INT_MAX || num < INT_MIN)
-			return (1);
+			return (ft_free_error(adm, str, 1));
 		list_inser(adm, num);
 		i++;
 	}
