@@ -6,12 +6,26 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 15:13:51 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/07 11:36:26 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/08 16:25:33 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "../push_swap.h"
+
+void	*ft_free_split(char **strs)
+{
+	int	i;
+
+	i = -1;
+	if (strs)
+	{
+		while (strs[++i])
+			free(strs[i]);
+		free(strs);
+	}
+	return (0);
+}
 
 int	ft_is_from_charset(char c, char *charset)
 {
@@ -70,28 +84,28 @@ char	*ft_strcut(char *str, char *charset)
 char	**ft_split(char *str, char *charset)
 {
 	char	**strs;
-	int		i;
-	int		j;
-	int		k;
+	int		i[3];
 
-	i = 0;
-	k = 0;
-	j = ft_count_words(str, charset);
-	strs = malloc(sizeof(strs) * (j + 1));
+	i[0] = 0;
+	i[1] = 0;
+	i[2] = ft_count_words(str, charset);
+	strs = malloc(sizeof(strs) * (i[2] + 1));
 	if (strs == NULL)
 		return (0);
-	while (str[i])
+	while (str[i[0]])
 	{
-		while (str[i] && ft_is_from_charset(str[i], charset))
-			i++;
-		if (k < j)
+		while (str[i[0]] && ft_is_from_charset(str[i[0]], charset))
+			i[0]++;
+		if (i[1] < i[2])
 		{
-			strs[k] = ft_strcut(&str[i], charset);
-			k++;
+			strs[i[1]] = ft_strcut(&str[i[0]], charset);
+			if (strs == NULL)
+				return (ft_free_split(strs));
+			i[1]++;
 		}
-		while (str[i] && !ft_is_from_charset(str[i], charset))
-			i++;
+		while (str[i[0]] && !ft_is_from_charset(str[i[0]], charset))
+			i[0]++;
 	}
-	strs[k] = 0;
+	strs[i[1]] = 0;
 	return (strs);
 }

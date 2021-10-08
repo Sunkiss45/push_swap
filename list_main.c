@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_init.c                                        :+:      :+:    :+:   */
+/*   list_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/07 16:10:28 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/08 15:15:25 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	list_delete(t_adm *adm)
+{
+	t_dll	*now;
+
+	now = adm->head;
+	while (now != adm->tail)
+	{
+		now = now->next;
+		free(now->prev);
+	}
+	free(now);
+	free(adm);
+}
 
 t_adm	*list_init(t_adm *adm, t_dll *dll, int first)
 {

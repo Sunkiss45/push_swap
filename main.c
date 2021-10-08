@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/07 16:05:33 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/08 16:09:06 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,52 @@
 int	ft_checker_1(char *s, int x)
 {
 	int	i;
+	int	y;
 
 	i = 0;
-	if (s == NULL || s[i] == '\0')
+	y = 0;
+	if (s == NULL || s[0] == '\0')
 		return (1);
-	while (s[i])
+	while (s[i + y])
 	{
-		if (s[i] >= 48 && s[i] <= 57)
-			i++;
-		else if (s[i] == 43 || s[i] == 45)
+		if (s[i + y] >= 48 && s[i + y] <= 57)
+			y++;
+		else if (s[i + y] == 43 || s[i + y] == 45)
 		{
-			if (s[i + 1] < 48 || s[i + 1] > 57)
+			if (s[i + y + 1] < 48 || s[i + y + 1] > 57)
 				return (1);
 			i++;
 		}
-		else if (x && s[i] == 32)
+		else if (x && s[i + y] == 32)
 			i++;
 		else
 			return (1);
 	}
+	if (y == 0)
+		return (1);
 	return (0);
+}
+
+void	ft_free(t_adm *adm, char **str)
+{
+	int	i;
+
+	i = -1;
+	if (str)
+	{
+		while (str[++i])
+			free(str[i]);
+		free(str);
+	}
+	list_delete(adm);
+	return ;
 }
 
 int	one_arg(char *s, t_adm *adm, t_dll *dll)
 {
 	char	**str;
+	long	num;
 	int		i;
-	int		num;
 
 	if (ft_checker_1(s, 1))
 		return (1);
@@ -57,11 +76,12 @@ int	one_arg(char *s, t_adm *adm, t_dll *dll)
 	{
 		num = ft_atoi(str[i]);
 		if (num > INT_MAX || num < INT_MIN)
-			return(1);
+			return (1);
 		list_inser(adm, num);
 		i++;
 	}
 	list_display(adm);
+	ft_free(adm, str);
 	return (0);
 }
 
