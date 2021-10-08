@@ -6,14 +6,13 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 15:13:51 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/08 16:25:33 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/08 17:09:59 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "../push_swap.h"
 
-void	*ft_free_split(char **strs)
+static void	*ft_free(char **strs)
 {
 	int	i;
 
@@ -27,7 +26,7 @@ void	*ft_free_split(char **strs)
 	return (0);
 }
 
-int	ft_is_from_charset(char c, char *charset)
+static int	ft_is_from_charset(char c, char *charset)
 {
 	int	i;
 
@@ -41,7 +40,7 @@ int	ft_is_from_charset(char c, char *charset)
 	return (0);
 }
 
-int	ft_count_words(char *str, char *charset)
+static int	ft_count_words(char *str, char *charset)
 {
 	int	i;
 	int	j;
@@ -60,7 +59,7 @@ int	ft_count_words(char *str, char *charset)
 	return (j);
 }
 
-char	*ft_strcut(char *str, char *charset)
+static char	*ft_strcut(char *str, char *charset)
 {
 	int		i;
 	char	*new_str;
@@ -100,7 +99,7 @@ char	**ft_split(char *str, char *charset)
 		{
 			strs[i[1]] = ft_strcut(&str[i[0]], charset);
 			if (strs == NULL)
-				return (ft_free_split(strs));
+				return (ft_free(strs));
 			i[1]++;
 		}
 		while (str[i[0]] && !ft_is_from_charset(str[i[0]], charset))

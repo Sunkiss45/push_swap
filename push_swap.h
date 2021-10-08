@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 16:53:02 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/08 15:15:59 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/08 17:09:25 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ t_adm	*list_init(t_adm *adm, t_dll *dll, int first);
 void	list_inser(t_adm *head, int add);
 void	list_delete(t_adm *adm);
 void	list_display(t_adm *head);
+
+void	free_split(char **str);
+void	free_all(t_adm *adm, char **str);
+int		free_error(t_adm *adm, char **str, int x);
 
 char	**ft_split(char *str, char *charset);
 long	ft_atoi(char *s);
