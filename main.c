@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/08 17:09:40 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/09 18:21:28 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,30 +41,46 @@ int	ft_checker_1(char *s, int x)
 	return (0);
 }
 
+int	ft_double(t_adm *adm)
+{
+	t_dll	*now[2];
+	int		y;
+
+	now[0] = adm->head;
+	y = now[0]->n;
+	while (now[0]->next != adm->head)
+	{
+		y = now[0]->n;
+		now[1] = adm->head;
+		while (now[1]->next != adm->head)
+		{
+			if (y == now[1]->next->n && now[0] != now[1]->next)
+				return (1);
+			now[1] = now[1]->next;
+		}
+		now[0] = now[0]->next;
+	}
+	return (0);
+}
+
 int	one_arg(char *s, t_adm *adm, t_dll *dll)
 {
 	char	**str;
 	long	num;
-	int		i;
 
 	if (ft_checker_1(s, 1))
 		return (1);
 	str = ft_split(s, " ");
-	if (str == NULL)
-		return (1);
+	if (!str || !str[1])
+		return (free_error(adm, str, 0));
 	num = ft_atoi(str[0]);
 	if (num > INT_MAX || num < INT_MIN)
 		return (free_error(adm, str, 0));
 	adm = list_init(adm, dll, num);
-	i = 1;
-	while (str[i])
-	{
-		num = ft_atoi(str[i]);
-		if (num > INT_MAX || num < INT_MIN)
-			return (free_error(adm, str, 1));
-		list_inser(adm, num);
-		i++;
-	}
+	if (list_enter(adm, str))
+		return (free_error(adm, str, 1));
+	if (ft_double(adm))
+		return (free_error(adm, str, 1));
 	list_display(adm);
 	free_all(adm, str);
 	return (0);

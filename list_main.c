@@ -6,11 +6,28 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/08 15:15:25 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/09 17:52:56 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	list_enter(t_adm *adm, char **str)
+{
+	long	num;
+	int		i;
+
+	i = 1;
+	while(str[i])
+	{
+		num = ft_atoi(str[i]);
+		if (num > INT_MAX || num < INT_MIN)
+			return (1);
+		list_inser(adm, num);
+		i++;
+	}
+	return (0);
+}
 
 void	list_delete(t_adm *adm)
 {
@@ -52,7 +69,7 @@ void	list_inser(t_adm *adm, int add)
 	new->prev = adm->tail;
 	adm->head->prev = new;
 	adm->tail->next = new;
-	adm->head = new;
+	adm->tail = new;
 }
 
 /* ===== Test Zone ===== */
