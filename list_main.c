@@ -6,18 +6,16 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/09 17:52:56 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/11 17:31:05 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	list_enter(t_adm *adm, char **str)
+int	list_enter(t_adm *adm, char **str, int i)
 {
 	long	num;
-	int		i;
 
-	i = 1;
 	while(str[i])
 	{
 		num = ft_atoi(str[i]);
@@ -29,7 +27,7 @@ int	list_enter(t_adm *adm, char **str)
 	return (0);
 }
 
-void	list_delete(t_adm *adm)
+int	list_delete(t_adm *adm, int x)
 {
 	t_dll	*now;
 
@@ -41,6 +39,7 @@ void	list_delete(t_adm *adm)
 	}
 	free(now);
 	free(adm);
+	return (x);
 }
 
 t_adm	*list_init(t_adm *adm, t_dll *dll, int first)

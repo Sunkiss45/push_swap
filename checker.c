@@ -6,13 +6,13 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/11 16:47:21 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/11 17:36:50 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_check(char *s, int x)
+int	ft_check_one(char *s, int x)
 {
 	int	i;
 	int	y;
@@ -38,6 +38,20 @@ int	ft_check(char *s, int x)
 	}
 	if (y == 0)
 		return (1);
+	return (0);
+}
+
+int	ft_check_more(char **s)
+{
+	int	i;
+
+	i = 1;
+	while (s[i])
+	{
+		if (ft_check_one(s[i], 0))
+			return (1);
+		i++;
+	}
 	return (0);
 }
 
