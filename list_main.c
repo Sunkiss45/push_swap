@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/11 17:31:05 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/12 15:18:11 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	list_enter(t_adm *adm, char **str, int i)
 {
 	long	num;
 
-	while(str[i])
+	while (str[i])
 	{
 		num = ft_atoi(str[i]);
 		if (num > INT_MAX || num < INT_MIN)
@@ -76,16 +76,13 @@ void	list_inser(t_adm *adm, int add)
 void	list_display(t_adm *adm)
 {
 	t_dll	*now;
+//	char	buf[1024];
 	int		i;
-	int		k;
 
 	if (adm == NULL)
 		return ;
-	now = adm->head;
-	i = 0;
-	k = 0;
 
-	printf(YELLOW"\n--- Liste Chaine simple ---\n\n");
+/*	printf(YELLOW"\n--- Liste Chaine simple ---\n\n");
 	while (i != 1)
 	{
 		printf(GREEN"%d -> ", now->n);
@@ -119,39 +116,38 @@ void	list_display(t_adm *adm)
 			i = 1;
 		now = now->prev;
 	}
-	printf(RED"NULL\n\n");
+	printf(RED"NULL\n\n");*/
 
-	printf(YELLOW"--- Liste Chaine Double & Circu ---\n\n");
-	i = 0;
-	printf(CYAN"head:");
+	printf(YELLOW"\n--- Liste ---\n\n");
+	i = -1;
 	now = adm->head;
-	while (i != 3)
+	while (i != 1)
 	{
 		if (now == adm->tail)
-			printf(BLUE"tail:");
+			printf(BLUE"t:");
+		if (now == adm->head)
+			printf(CYAN"h:");
 		printf(GREEN"%d -> ", now->n);
-		if (now->next == adm->head)
+		if (now == adm->head)
 			i++;
 		now = now->next;
-		if (now == adm->head)
-			printf(CYAN"head:");
 	}
 	printf(RED"...\n");
 
-	i = 0;
-	printf(BLUE"tail:");
+	i = -1;
 	now = adm->tail;
-	while (i != 3)
+	while (i != 1)
 	{
 		if (now == adm->head)
-			printf(CYAN"head:");
+			printf(CYAN"h:");
+		if (now == adm->tail)
+			printf(BLUE"t:");
 		printf(GREEN"%d -> ", now->n);
-		if (now->prev == adm->tail)
+		if (now == adm->tail)
 			i++;
 		now = now->prev;
-		if (now == adm->tail)
-			printf(BLUE"tail:");
 	}
 	printf(RED"...\n\n");
+//	read(0, buf, 10);
 	return ;
 }
