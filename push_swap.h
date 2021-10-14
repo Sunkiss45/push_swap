@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 16:53:02 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/11 17:31:35 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/14 17:05:25 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ typedef struct s_adm
 	struct s_dll	*tail;
 }	t_adm;
 
-t_adm	*list_init(t_adm *adm, t_dll *dll, int first);
+t_adm	*list_init_a(t_adm *adm, t_dll *dll, int first);
+t_adm	*list_init_b(t_adm *adm);
 int		list_enter(t_adm *adm, char **str, int i);
-void	list_inser(t_adm *head, int add);
+void	list_inser(t_adm *adm, int add);
 int		list_delete(t_adm *adm, int x);
-void	list_display(t_adm *head);
+void	list_display(t_adm *adm);
 
 void	free_split(char **str);
-int		free_all(t_adm *adm, char **str);
-int		free_error(t_adm *adm, char **str, int x);
+int		free_all(t_adm *adm, char **str, int x);
 
 int		ft_check_one(char *s, int x);
 int		ft_check_more(char **s);

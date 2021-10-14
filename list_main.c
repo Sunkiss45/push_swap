@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/12 15:18:11 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/14 16:23:10 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,22 @@ int	list_enter(t_adm *adm, char **str, int i)
 	return (0);
 }
 
-int	list_delete(t_adm *adm, int x)
+t_adm	*list_init_b(t_adm *adm)
 {
-	t_dll	*now;
-
-	now = adm->head;
-	while (now != adm->tail)
-	{
-		now = now->next;
-		free(now->prev);
-	}
-	free(now);
-	free(adm);
-	return (x);
+	adm = malloc(sizeof(*adm));
+	if (adm == NULL)
+		return (NULL);
+	adm->head = NULL;
+	adm->tail = NULL;
+	return (adm);
 }
 
-t_adm	*list_init(t_adm *adm, t_dll *dll, int first)
+t_adm	*list_init_a(t_adm *adm, t_dll *dll, int first)
 {
 	adm = malloc(sizeof(*adm));
 	dll = malloc(sizeof(*dll));
 	if (adm == NULL || dll == NULL)
-		 return (0);
+		return (NULL);
 	adm->head = dll;
 	adm->tail = dll;
 	dll->n = first;
