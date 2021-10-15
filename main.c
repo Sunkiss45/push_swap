@@ -6,13 +6,13 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/15 16:54:19 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/15 21:30:09 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*int	more_arg(char **str, t_adm *adm, t_dll *dll)
+int	more_arg(char **str, t_adm *adma, t_adm *admb, t_dll *dll)
 {
 	long	num;
 
@@ -21,14 +21,17 @@
 	num = ft_atoi(str[1]);
 	if (num > INT_MAX || num < INT_MIN)
 		return (1);
-	adm = list_init_a(adm, dll, num);
-	if (list_enter(adm, str, 2) || ft_doub(adm))
-		return (list_delete(adm, 1));
-	if (ft_sor(adm) || ft_sor_rev(adm))
-		return (list_delete(adm, 0));
-	list_display(adm);
-	return (list_delete(adm, 0));
-}*/
+	adma = list_init_a(adma, dll, num);
+	admb = list_init_b(admb);
+	if (adma == NULL || admb == NULL)
+		return (free_all(adma, admb, NULL, 1));
+	if (list_enter(adma, str, 2) || ft_doub(adma))
+		return (free_all(adma, admb, NULL, 1));
+	if (ft_sor(adma) || ft_sor_rev(adma))
+		return (free_all(adma, admb, NULL, 0));
+	list_display(adma, admb);
+	return (free_all(adma, admb, NULL, 0));
+}
 
 int	one_arg(char *s, t_adm *adma, t_adm *admb, t_dll *dll)
 {
@@ -70,8 +73,8 @@ int	main(int ac, char **av)
 		e = 1;
 	else if (ac == 2)
 		e = one_arg(av[1], adma, admb, dll);
-//	else
-//		e = more_arg(av, adma, dll);
+	else
+		e = more_arg(av, adma, admb, dll);
 	if (e)
 		write(2, "Error\n", 6);
 	return (0);

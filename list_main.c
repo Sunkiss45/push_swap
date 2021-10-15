@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/15 17:17:17 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/15 21:38:07 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,9 @@ void	list_display(t_adm *adma, t_adm *admb)
 		printf(RED"...\n\n");
 	}
 	else
-		printf(RED"NULL\n");
+		printf(RED"NULL\n\n");
 
-	printf(YELLOW"--- Stack b ---\n");
+	printf(YELLOW"--- Stack B ---\n");
 	i = -1;
 	now = admb->head;
 	if (now)
@@ -152,12 +152,12 @@ void	list_display(t_adm *adma, t_adm *admb)
 				i++;
 			now = now->prev;
 		}
-		printf(RED"...\n\n");
+		printf(RED"...\n");
 	}
 	else
 		printf(RED"NULL\n");
 
-	printf("\n");
+	printf(PURPLE"\n");
 	read(0, buf, 4);
 	i = 0;
 	if (buf[0] == 's')
