@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 16:53:02 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/14 17:05:25 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/15 17:06:54 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,15 @@ t_adm	*list_init_b(t_adm *adm);
 int		list_enter(t_adm *adm, char **str, int i);
 void	list_inser(t_adm *adm, int add);
 int		list_delete(t_adm *adm, int x);
-void	list_display(t_adm *adm);
+void	list_display(t_adm *adma, t_adm *b);
+
+void	ft_s(t_adm *adm);
+void	ft_r(t_adm *adm);
+void	ft_rr(t_adm *adm);
+void	ft_p(t_adm *admfrom, t_adm *admto);
 
 void	free_split(char **str);
-int		free_all(t_adm *adm, char **str, int x);
+int		free_all(t_adm *adma, t_adm *admb, char **str, int x);
 
 int		ft_check_one(char *s, int x);
 int		ft_check_more(char **s);

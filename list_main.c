@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/14 16:23:10 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/15 17:17:17 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,81 +68,132 @@ void	list_inser(t_adm *adm, int add)
 
 /* ===== Test Zone ===== */
 
-void	list_display(t_adm *adm)
+void	list_display(t_adm *adma, t_adm *admb)
 {
 	t_dll	*now;
-//	char	buf[1024];
+	char	buf[1024];
 	int		i;
 
-	if (adm == NULL)
+	if (adma == NULL)
 		return ;
 
-/*	printf(YELLOW"\n--- Liste Chaine simple ---\n\n");
-	while (i != 1)
-	{
-		printf(GREEN"%d -> ", now->n);
-		if (now->next == adm->head)
-			i = 1;
-		now = now->next;
-		k++;
-	}
-	printf(RED"NULL\n\n");
-
-	printf(YELLOW"--- Liste Chaine Double ---\n\n");
-	i = 0;
-	printf(RED"NULL -> ");
-	now = adm->head;
-	while (i != 1)
-	{
-		printf(GREEN"%d -> ", now->n);
-		if (now->next == adm->head)
-			i = 1;
-		now = now->next;
-	}
-	printf(RED"NULL\n");
-
-	i = 0;
-	printf(RED"NULL -> ");
-	now = adm->tail;
-	while (i != 1)
-	{
-		printf(GREEN"%d -> ", now->n);
-		if (now->prev == adm->tail)
-			i = 1;
-		now = now->prev;
-	}
-	printf(RED"NULL\n\n");*/
-
-	printf(YELLOW"\n--- Liste ---\n\n");
+	printf(YELLOW"\n--- Stack A ---\n");
 	i = -1;
-	now = adm->head;
-	while (i != 1)
+	now = adma->head;
+	if (now)
 	{
-		if (now == adm->tail)
-			printf(BLUE"t:");
-		if (now == adm->head)
-			printf(CYAN"h:");
-		printf(GREEN"%d -> ", now->n);
-		if (now == adm->head)
-			i++;
-		now = now->next;
+		while (i != 1)
+		{
+			if (now == adma->tail)
+				printf(BLUE"t:");
+			if (now == adma->head)
+				printf(CYAN"h:");
+			printf(GREEN"%d -> ", now->n);
+			if (now == adma->head)
+				i++;
+			now = now->next;
+		}
+		printf(RED"...\n");
 	}
-	printf(RED"...\n");
-
+	else
+		printf(RED"NULL\n");
 	i = -1;
-	now = adm->tail;
-	while (i != 1)
+	now = adma->tail;
+	if (now)
 	{
-		if (now == adm->head)
-			printf(CYAN"h:");
-		if (now == adm->tail)
-			printf(BLUE"t:");
-		printf(GREEN"%d -> ", now->n);
-		if (now == adm->tail)
-			i++;
-		now = now->prev;
+		while (i != 1)
+		{
+			if (now == adma->head)
+				printf(CYAN"h:");
+			if (now == adma->tail)
+				printf(BLUE"t:");
+			printf(GREEN"%d -> ", now->n);
+			if (now == adma->tail)
+				i++;
+			now = now->prev;
+		}
+		printf(RED"...\n\n");
 	}
-	printf(RED"...\n\n");
-//	read(0, buf, 10);
+	else
+		printf(RED"NULL\n");
+
+	printf(YELLOW"--- Stack b ---\n");
+	i = -1;
+	now = admb->head;
+	if (now)
+	{
+		while (i != 1)
+		{
+			if (now == admb->tail)
+				printf(BLUE"t:");
+			if (now == admb->head)
+				printf(CYAN"h:");
+			printf(GREEN"%d -> ", now->n);
+			if (now == admb->head)
+				i++;
+			now = now->next;
+		}
+		printf(RED"...\n");
+	}
+	else
+		printf(RED"NULL\n");
+	i = -1;
+	now = admb->tail;
+	if (now)
+	{
+		while (i != 1)
+		{
+			if (now == admb->head)
+				printf(CYAN"h:");
+			if (now == admb->tail)
+				printf(BLUE"t:");
+			printf(GREEN"%d -> ", now->n);
+			if (now == admb->tail)
+				i++;
+			now = now->prev;
+		}
+		printf(RED"...\n\n");
+	}
+	else
+		printf(RED"NULL\n");
+
+	printf("\n");
+	read(0, buf, 4);
+	i = 0;
+	if (buf[0] == 's')
+	{
+		if (buf[1] == 't')
+		{
+			if (buf[2] == 'o')
+				if (buf[3] == 'p')
+					return ;
+		}
+		else if (buf[1] == 'a')
+			ft_s(adma);
+		else if (buf[1] == 'b')
+			ft_s(admb);
+	}
+	else if (buf[0] == 'r')
+	{
+		if (buf[1] == 'a')
+			ft_r(adma);
+		else if (buf[1] == 'b')
+			ft_r(admb);
+		else if (buf[1] == 'r')
+		{
+			if (buf[2] == 'a')
+				ft_rr(adma);
+			else if (buf[2] == 'b')
+				ft_rr(admb);
+		}
+	}
+	else if (buf[0] == 'p')
+	{
+		if (buf[1] == 'a')
+			ft_p(admb, adma);
+		else if (buf[1] == 'b')
+			ft_p(adma, admb);
+	}
+	list_display(adma, admb);
 	return ;
 }

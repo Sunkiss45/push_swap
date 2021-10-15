@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:03:54 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/14 15:26:09 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/15 16:36:50 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,43 @@ void	ft_rr(t_adm *adm)
 	return ;
 }
 
+void	ft_p2(t_adm *admto, t_dll *now)
+{
+	if (!admto->head)
+	{
+		admto->head = now;
+		admto->tail = now;
+		now->next = admto->head;
+		now->prev = admto->tail;
+	}
+	else
+	{
+		now->next = admto->head;
+		now->prev = admto->tail;
+		admto->head = now;
+		admto->tail->next = admto->head;
+		now->next->prev = now;
+	}
+	return ;
+}
+
 void	ft_p(t_adm *admfrom, t_adm *admto)
 {
 	t_dll	*now;
 
 	now = admfrom->head;
-	admfrom->head = now->next;
-	admfrom->head->prev = admfrom->tail;
-	admfrom->tail->next = admfrom->head;
-	now->next = admto->head;
-	now->prev = admto->tail;
-	admto->head = now;
-	admto->tail->next = admto->head;
-	now->next->prev = now;
+	if (now->next == now)
+	{
+		admfrom->head = NULL;
+		admfrom->tail = NULL;
+	}
+	else
+	{
+		admfrom->head = now->next;
+		now->next->prev = admfrom->tail;
+		admfrom->tail->next = admfrom->head;
+	}
+	ft_p2(admto, now);
 	return ;
 }
 
