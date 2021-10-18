@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 16:53:02 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/18 15:54:39 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/18 17:01:30 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ int		list_enter(t_adm *adm, char **str, int i);
 void	list_inser(t_adm *adm, int add);
 int		list_delete(t_adm *adm, int x);
 void	list_display(t_adm *adma, t_adm *b);
+
+void	algo_main(t_adm *adma, t_adm *admb);
+void	algo_3(t_adm *adm);
+void	algo_5(t_adm *adma, admb);
 
 void	ft_s(t_adm *adm, char *s);
 void	ft_r(t_adm *adm, char *s);

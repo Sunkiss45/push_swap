@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/15 21:30:09 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/18 16:40:32 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ int	more_arg(char **str, t_adm *adma, t_adm *admb, t_dll *dll)
 		return (free_all(adma, admb, NULL, 1));
 	if (list_enter(adma, str, 2) || ft_doub(adma))
 		return (free_all(adma, admb, NULL, 1));
-	if (ft_sor(adma) || ft_sor_rev(adma))
+	if (ft_sor(adma))
 		return (free_all(adma, admb, NULL, 0));
+	algo_main(adma, admb);
 	list_display(adma, admb);
 	return (free_all(adma, admb, NULL, 0));
 }
@@ -52,7 +53,7 @@ int	one_arg(char *s, t_adm *adma, t_adm *admb, t_dll *dll)
 		return (free_all(adma, admb, str, 1));
 	if (list_enter(adma, str, 1) || ft_doub(adma))
 		return (free_all(adma, admb, str, 1));
-	if (ft_sor(adma) || ft_sor_rev(adma))
+	if (ft_sor(adma))
 		return (free_all(adma, admb, str, 0));
 	list_display(adma, admb);
 	return (free_all(adma, admb, str, 0));
