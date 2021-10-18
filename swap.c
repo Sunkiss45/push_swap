@@ -6,33 +6,36 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:03:54 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/15 16:36:50 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/18 15:54:13 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-void	ft_s(t_adm *adm)
+void	ft_s(t_adm *adm, char *s)
 {
 	int	y;
 
 	y = adm->head->n;
 	adm->head->n = adm->head->next->n;
 	adm->head->next->n = y;
+	write(1, &s[0], 3);
 	return ;
 }
 
-void	ft_r(t_adm *adm)
+void	ft_r(t_adm *adm, char *s)
 {
 	adm->head = adm->head->next;
 	adm->tail = adm->tail->next;
+	write(1, &s[0], 3);
 	return ;
 }
 
-void	ft_rr(t_adm *adm)
+void	ft_rr(t_adm *adm, char *s)
 {
 	adm->head = adm->head->prev;
 	adm->tail = adm->tail->prev;
+	write(1, &s[0], 4);
 	return ;
 }
 
@@ -56,7 +59,7 @@ void	ft_p2(t_adm *admto, t_dll *now)
 	return ;
 }
 
-void	ft_p(t_adm *admfrom, t_adm *admto)
+void	ft_p(t_adm *admfrom, t_adm *admto, char *s)
 {
 	t_dll	*now;
 
@@ -73,6 +76,7 @@ void	ft_p(t_adm *admfrom, t_adm *admto)
 		admfrom->tail->next = admfrom->head;
 	}
 	ft_p2(admto, now);
+	write(1, &s[0], 3);
 	return ;
 }
 

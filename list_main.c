@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/15 21:38:07 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/18 15:56:03 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,30 +169,30 @@ void	list_display(t_adm *adma, t_adm *admb)
 					return ;
 		}
 		else if (buf[1] == 'a')
-			ft_s(adma);
+			ft_s(adma, "sa\n");
 		else if (buf[1] == 'b')
-			ft_s(admb);
+			ft_s(admb, "sb\n");
 	}
 	else if (buf[0] == 'r')
 	{
 		if (buf[1] == 'a')
-			ft_r(adma);
+			ft_r(adma, "ra\n");
 		else if (buf[1] == 'b')
-			ft_r(admb);
+			ft_r(admb, "rb\n");
 		else if (buf[1] == 'r')
 		{
 			if (buf[2] == 'a')
-				ft_rr(adma);
+				ft_rr(adma, "rra\n");
 			else if (buf[2] == 'b')
-				ft_rr(admb);
+				ft_rr(admb, "rrb\n");
 		}
 	}
 	else if (buf[0] == 'p')
 	{
 		if (buf[1] == 'a')
-			ft_p(admb, adma);
+			ft_p(admb, adma, "pa\n");
 		else if (buf[1] == 'b')
-			ft_p(adma, admb);
+			ft_p(adma, admb, "pb\n");
 	}
 	list_display(adma, admb);
 	return ;
