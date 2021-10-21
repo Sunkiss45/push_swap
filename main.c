@@ -6,11 +6,48 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/18 16:40:32 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/21 17:20:04 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_index(t_adm *adm)
+{
+	t_dll	*now[2];
+
+	now[0] = adm->head;
+	while (now[0] != adm->tail)
+	{
+		now[1] = adm->head;
+		while (now[1] != adm->tail)
+		{
+			if (now[0]->n > now[1]->n)
+				now[0]->i++;
+			now[1] = now[1]->next;
+		}
+		if (now[0]->n > now[1]->n)
+			now[0]->i++;
+		now[0] = now[0]->next;
+	}
+	now[1] = adm->head;
+	while (now[1] != adm->tail)
+	{
+		if (now[0]->n > now[1]->n)
+			now[0]->i++;
+		now[1] = now[1]->next;
+	}
+	if (now[0]->n > now[1]->n)
+		now[0]->i++;
+}
+
+int	pre_algo(t_adm *adma, t_adm *admb, char **str)
+{
+	ft_index(adma);
+	algo_main(adma, admb);
+	list_display(adma, admb);
+	return (free_all(adma, admb, str, 0));
+}
 
 int	more_arg(char **str, t_adm *adma, t_adm *admb, t_dll *dll)
 {
@@ -29,9 +66,7 @@ int	more_arg(char **str, t_adm *adma, t_adm *admb, t_dll *dll)
 		return (free_all(adma, admb, NULL, 1));
 	if (ft_sor(adma))
 		return (free_all(adma, admb, NULL, 0));
-	algo_main(adma, admb);
-	list_display(adma, admb);
-	return (free_all(adma, admb, NULL, 0));
+	return (pre_algo(adma, admb, NULL));
 }
 
 int	one_arg(char *s, t_adm *adma, t_adm *admb, t_dll *dll)
@@ -55,8 +90,7 @@ int	one_arg(char *s, t_adm *adma, t_adm *admb, t_dll *dll)
 		return (free_all(adma, admb, str, 1));
 	if (ft_sor(adma))
 		return (free_all(adma, admb, str, 0));
-	list_display(adma, admb);
-	return (free_all(adma, admb, str, 0));
+	return (pre_algo(adma, admb, str));
 }
 
 int	main(int ac, char **av)
@@ -70,8 +104,8 @@ int	main(int ac, char **av)
 	adma = NULL;
 	admb = NULL;
 	e = 0;
-	if (ac <= 1)
-		e = 1;
+	if (ac == 1)
+		return (0);
 	else if (ac == 2)
 		e = one_arg(av[1], adma, admb, dll);
 	else

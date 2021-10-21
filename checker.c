@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/12 12:00:22 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/21 15:22:28 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ int	ft_doub(t_adm *adm)
 
 	now[0] = adm->head;
 	y = now[0]->n;
-	while (now[0]->next != adm->head)
+	while (now[0] != adm->tail)
 	{
 		y = now[0]->n;
 		now[1] = adm->head;
-		while (now[1]->next != adm->head)
+		while (now[1] != adm->tail)
 		{
 			if (y == now[1]->next->n && now[0] != now[1]->next)
 				return (1);

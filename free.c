@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 16:46:54 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/15 16:52:55 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/21 17:19:39 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	list_delete(t_adm *adm, int x)
 	free(adm);
 	return (x);
 }
+
 void	free_split(char **str)
 {
 	int	i;

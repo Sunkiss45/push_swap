@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:03:54 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/18 15:54:13 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/21 17:08:30 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	ft_s(t_adm *adm, char *s)
 	y = adm->head->n;
 	adm->head->n = adm->head->next->n;
 	adm->head->next->n = y;
+	y = adm->head->i;
+	adm->head->i = adm->head->next->i;
+	adm->head->next->i = y;
 	write(1, &s[0], 3);
 	return ;
 }
