@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/18 15:56:03 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/26 17:33:24 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_adm	*list_init_a(t_adm *adm, t_dll *dll, int first)
 	adm->head = dll;
 	adm->tail = dll;
 	dll->n = first;
+	dll->i = 0;
 	dll->next = adm->head;
 	dll->prev = adm->tail;
 	return (adm);
@@ -59,6 +60,7 @@ void	list_inser(t_adm *adm, int add)
 	if (new == NULL)
 		return ;
 	new->n = add;
+	new->i = 0;
 	new->next = adm->head;
 	new->prev = adm->tail;
 	adm->head->prev = new;

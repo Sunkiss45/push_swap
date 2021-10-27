@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 16:53:02 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/21 17:40:49 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/25 17:00:48 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	list_display(t_adm *adma, t_adm *b);
 void	algo_main(t_adm *adma, t_adm *admb);
 int		count_nb(t_adm *adm);
 void	algo_3(t_adm *adm);
+void	algo_4(t_adm *adma, t_adm *admb);
 void	algo_5(t_adm *adma, t_adm *admb);
 
 void	ft_s(t_adm *adm, char *s);
