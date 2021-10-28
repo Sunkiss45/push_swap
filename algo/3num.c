@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   3-5num.c                                           :+:      :+:    :+:   */
+/*   3num.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:27:52 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/27 20:56:21 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/10/28 04:55:46 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,32 +39,4 @@ void	algo_3(t_adm *adm)
 		else if (adm->tail->n < adm->head->n)
 			ft_rr(adm, "rra\n");
 	}
-}
-
-void	algo_5(t_adm *adma, t_adm *admb)
-{
-	while (count_nb(adma) > 3)
-		ft_p(adma, admb, NULL);
-	if (ft_sor(adma))
-		while (admb->head)
-			ft_p(admb, adma, NULL);
-	else
-	{
-		while (admb->head)
-			ft_p(admb, adma, NULL);
-		while (count_nb(adma) > 3)
-			ft_p(adma, admb, "pb\n");
-		algo_3(adma);
-	}
-	while (admb->head)
-	{
-		if (admb->head->i > adma->tail->i)
-		{
-			ft_p(admb, adma, "pa\n");
-			ft_r(adma, "ra\n");
-		}
-		else if (admb->head->i < adma->head->i)
-			ft_p(admb, adma, "pa\n");
-	}
-	return ;
 }
