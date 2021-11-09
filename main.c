@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/03 17:31:31 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/08 17:07:32 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,25 @@ void	ft_index(t_adm *adm)
 	}
 	if (now[0]->n > now[1]->n)
 		now[0]->i++;
+}
+
+int	is_rotate(t_adm *adm)
+{
+	t_dll	*now[2];
+
+	now[0] = adm->head;
+	while (now[0]->i != 0)
+		now[0] = now[0]->next;
+	now[1] = now[0];
+	while (now[1] != now[0]->prev)
+	{
+		if (now[1]->i > now[1]->next->i)
+			return (0);
+		now[1] = now[1]->next;
+	}
+	if (now[1]->i > now[1]->next->i)
+		return (0);
+	return (1);
 }
 
 int	pre_algo(t_adm *adma, t_adm *admb, char **str)
