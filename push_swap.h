@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 16:53:02 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/03 17:31:35 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/09 16:13:11 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		ft_check_one(char *s, int x);
 int		ft_check_more(char **s);
 int		ft_doub(t_adm *adm);
 int		ft_sor(t_adm *adm);
-int		ft_sor_rev(t_adm *adm);
+int		ft_sorr(t_adm *adm);
 
 char	**ft_split(char *str, char *charset);
 long	ft_atoi(char *s);

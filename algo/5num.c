@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 20:56:37 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/03 14:52:19 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/09 16:25:31 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,26 +52,14 @@ static void	rot(t_adm *adma, t_adm *admb, int x)
 
 void	algo_5(t_adm *adma, t_adm *admb)
 {
-	ft_p(adma, admb, NULL);
-	if (ft_sor(adma))
+	ft_p(adma, admb, "pb\n");
+	algo_4(adma, admb);
+	if (admb->head->i == 0 || admb->head->i == 4)
 	{
-		ft_p(admb, adma, NULL);
+		ft_p(admb, adma, "pa\n");
 		if (adma->head->i == 4)
 			ft_r(adma, "ra\n");
-		else
-			rot(adma, admb, 1);
 	}
 	else
-	{
-		write(1, "pb\n", 3);
-		algo_4(adma, admb);
-		if (admb->head->i == 0 || admb->head->i == 4)
-		{
-			ft_p(admb, adma, "pa\n");
-			if (adma->head->i == 4)
-				ft_r(adma, "ra\n");
-		}
-		else
-			rot(adma, admb, 0);
-	}
+		rot(adma, admb, 0);
 }

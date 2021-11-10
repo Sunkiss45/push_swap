@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:27:52 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/28 04:55:46 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/09 16:13:52 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	algo_3(t_adm *adm)
 	t_dll	*mid;
 
 	mid = adm->head->next;
-	if (ft_sor_rev(adm))
+	if (ft_sorr(adm))
 	{
 		ft_s(adm, "sa\n");
 		ft_rr(adm, "rra\n");

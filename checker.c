@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/03 17:31:30 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/09 16:13:27 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	ft_sor(t_adm *adm)
 	return (0);
 }
 
-int	ft_sor_rev(t_adm *adm)
+int	ft_sorr(t_adm *adm)
 {
 	t_dll	*now;
 
