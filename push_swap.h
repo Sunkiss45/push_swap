@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 16:53:02 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/12 15:39:21 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/12 18:12:08 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ int		ft_sorr(t_adm *adm);
 
 char	**ft_split(char *str, char *charset);
 long	ft_atoi(char *s);
+int		ft_strlen(char *s);
 
 #endif

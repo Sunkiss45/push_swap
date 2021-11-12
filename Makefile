@@ -6,7 +6,7 @@
 #    By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/12 14:53:30 by ebarguil          #+#    #+#              #
-#    Updated: 2021/11/12 15:42:49 by ebarguil         ###   ########.fr        #
+#    Updated: 2021/11/12 18:23:18 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC		=	main.c \
 			algo/5num.c \
 			utils/ft_atoi.c \
 			utils/ft_split.c \
+			utils/ft_strlen.c \
 
 OBJ		=	$(SRC:.c=.o)
 
