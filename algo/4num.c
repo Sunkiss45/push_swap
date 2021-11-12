@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 20:56:37 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/12 14:33:49 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/12 15:25:42 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	counter(t_adm *adm)
 
 static void	rot2(t_adm *adma, int	*i)
 {
-	int y;
+	int	y;
 
 	y = counter(adma);
 	i[0] = 0;
