@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 20:56:37 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/09 16:24:14 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/12 14:33:49 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ void	algo_4(t_adm *adma, t_adm *admb)
 {
 	ft_p(adma, admb, "pb\n");
 	algo_3(adma);
-	if (admb->head->i == 0 || admb->head->i == 3)
+	if (admb->head->i == 0 || admb->head->i >= 3)
 	{
 		ft_p(admb, adma, "pa\n");
-		if (adma->head->i == 3)
+		if (adma->head->i >= 3)
 			ft_r(adma, "ra\n");
 	}
 	else

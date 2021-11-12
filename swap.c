@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:03:54 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/21 17:08:30 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/12 14:21:09 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_s(t_adm *adm, char *s)
 {
 	int	y;
 
+	if (!adm->head)
+		return ;
 	y = adm->head->n;
 	adm->head->n = adm->head->next->n;
 	adm->head->next->n = y;
@@ -28,6 +30,8 @@ void	ft_s(t_adm *adm, char *s)
 
 void	ft_r(t_adm *adm, char *s)
 {
+	if (!adm->head)
+		return ;
 	adm->head = adm->head->next;
 	adm->tail = adm->tail->next;
 	write(1, &s[0], 3);
@@ -36,6 +40,8 @@ void	ft_r(t_adm *adm, char *s)
 
 void	ft_rr(t_adm *adm, char *s)
 {
+	if (!adm->head)
+		return ;
 	adm->head = adm->head->prev;
 	adm->tail = adm->tail->prev;
 	write(1, &s[0], 4);
@@ -66,6 +72,8 @@ void	ft_p(t_adm *admfrom, t_adm *admto, char *s)
 {
 	t_dll	*now;
 
+	if (!admfrom->head)
+		return ;
 	now = admfrom->head;
 	if (now->next == now)
 	{

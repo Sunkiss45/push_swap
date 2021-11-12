@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/09 16:22:06 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/12 14:34:36 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int	pre_algo(t_adm *adma, t_adm *admb, char **str)
 	int	i;
 
 	i = 0;
+	if (count_nb(adma) == 1)
+		return (free_all(adma, admb, str, 0));
 	if (ft_sorr(adma) && count_nb(adma) > 5)
 		i = is_sorr(adma, admb);
 	ft_index(adma);
@@ -121,16 +123,15 @@ int	one_arg(char *s, t_adm *adma, t_adm *admb, t_dll *dll)
 	if (ft_check_one(s, 1))
 		return (1);
 	str = ft_split(s, " ");
-	if (!str || !str[1])
+	if (!str || !str[0])
 		return (free_all(adma, admb, str, 1));
 	num = ft_atoi(str[0]);
 	if (num > INT_MAX || num < INT_MIN)
 		return (free_all(adma, admb, str, 1));
 	adma = list_init_a(adma, dll, num);
 	admb = list_init_b(admb);
-	if (adma == NULL || admb == NULL)
-		return (free_all(adma, admb, str, 1));
-	if (list_enter(adma, str, 1) || ft_doub(adma))
+	if (adma == NULL || admb == NULL || list_enter(adma, str, 1)
+		|| ft_doub(adma))
 		return (free_all(adma, admb, str, 1));
 	if (ft_sor(adma))
 		return (free_all(adma, admb, str, 0));
