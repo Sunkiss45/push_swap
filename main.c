@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/12 18:23:53 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/15 15:03:02 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_tolong(char **s, int x)
 	x -= 1;
 	if (!s || !s[0])
 		return (1);
-	while(s[++x])
+	while (s[++x])
 	{
 		if (ft_strlen(s[x]) > 11)
 			return (1);

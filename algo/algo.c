@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:07:33 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/03 14:31:30 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/15 17:03:35 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,9 @@ void	algo_main(t_adm *adma, t_adm *admb)
 		return (algo_4(adma, admb));
 	else if (i == 5)
 		return (algo_5(adma, admb));
-	return ;
+	else
+	{
+		ft_p(adma, admb, "pb\n");
+		return (mort(adma, admb));
+	}
 }
