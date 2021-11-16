@@ -6,39 +6,27 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/15 15:03:02 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/16 14:22:46 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_index(t_adm *adm)
+int	pre_algo(t_adm *adma, t_adm *admb, char **str)
 {
-	t_dll	*now[2];
+	int	i;
 
-	now[0] = adm->head;
-	while (now[0] != adm->tail)
-	{
-		now[1] = adm->head;
-		while (now[1] != adm->tail)
-		{
-			if (now[0]->n > now[1]->n)
-				now[0]->i++;
-			now[1] = now[1]->next;
-		}
-		if (now[0]->n > now[1]->n)
-			now[0]->i++;
-		now[0] = now[0]->next;
-	}
-	now[1] = adm->head;
-	while (now[1] != adm->tail)
-	{
-		if (now[0]->n > now[1]->n)
-			now[0]->i++;
-		now[1] = now[1]->next;
-	}
-	if (now[0]->n > now[1]->n)
-		now[0]->i++;
+	i = 0;
+	if (count_nb(adma) == 1)
+		return (free_all(adma, admb, str, 0));
+	if (ft_sorr(adma) && count_nb(adma) > 5)
+		i = is_sorr(adma, admb);
+	ft_index(adma);
+	i += is_rot(adma);
+	if (!i)
+		algo_main(adma, admb);
+	list_display(adma, admb);
+	return (free_all(adma, admb, str, 0));
 }
 
 int	ft_tolong(char **s, int x)

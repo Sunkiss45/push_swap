@@ -6,7 +6,7 @@
 #    By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/12 14:53:30 by ebarguil          #+#    #+#              #
-#    Updated: 2021/11/15 16:49:07 by ebarguil         ###   ########.fr        #
+#    Updated: 2021/11/16 13:33:00 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ SRC		=	main.c \
 			free.c \
 			swap.c \
 			checker.c \
-			pre_algo.c \
 			algo/algo.c \
+			algo/algo-utils.c \
 			algo/3num.c \
 			algo/4num.c \
 			algo/5num.c \

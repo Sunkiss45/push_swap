@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 16:53:02 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/15 16:45:24 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/16 14:28:35 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_dll
 	int				n;
 	int				i;
 	int				c;
+	int				r;
 	struct s_dll	*next;
 	struct s_dll	*prev;
 }	t_dll;
@@ -51,6 +52,8 @@ void	list_display(t_adm *adma, t_adm *b);
 
 void	algo_main(t_adm *adma, t_adm *admb);
 void	ft_index(t_adm *adm);
+int		is_rot(t_adm *adm);
+int		is_sorr(t_adm *adma, t_adm *admb);
 int		pre_algo(t_adm *adma, t_adm *admb, char **str);
 
 int		count_nb(t_adm *adm);
