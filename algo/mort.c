@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 16:18:43 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/17 17:28:49 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/18 17:50:05 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 int	ft_calc_rot(t_adm *adm, int i)
 {
 	t_dll	*now;
-	int		c;
+	int		op;
 
 	now = adm->head;
-	c = 0;
-	while (i != now->i && c++ != -1)
+	op = 0;
+	while (i != now->i && op++ != -1)
 		now = now->next;
-	now->r = 0;
-	if (c > (count_nb(adm) / 2))
+	now->rev = 0;
+	if (op > (count_nb(adm) / 2))
 	{
 		now = adm->head;
-		c = 0;
-		while (i != now->i && c++ != -1)
+		op = 0;
+		while (i != now->i && op++ != -1)
 			now = now->prev;
-		now->r = 1;
+		now->rev = 1;
 	}
-	return (0);
+	return (op);
 }
 
 t_dll	*pos_b(t_dll *pa, t_adm *admb)
@@ -56,11 +56,64 @@ t_dll	*pos_b(t_dll *pa, t_adm *admb)
 	return (pb);
 }
 
+void	ft_push_opti(t_adm *adma, t_adm *admb, t_dll *opti)
+{
+	while (opti->opr-- > 0)
+	{
+		if (opti->rev)
+		{
+			write(1, "rrr\n", 4);
+			ft_rr(adma, NULL);
+			ft_rr(admb, NULL);
+		}
+		else
+		{
+			write(1, "rr\n", 3);
+			ft_r(adma, NULL);
+			ft_r(admb, NULL);
+		}
+	}
+	while (opti->opa-- > 0)
+	{
+		if (opti->rev)
+			ft_rr(adma, "rra\n");
+		else
+			ft_r(adma, "ra\n");
+	}
+	while (opti->opb-- > 0)
+	{
+		if (opti->revb)
+			ft_rr(admb, "rrb\n");
+		else
+			ft_r(admb, "rb\n");
+	}
+	ft_p(adma, admb, "pb\n");
+}
+
+void	do_final(t_adm *adma, t_adm *admb)
+{
+	t_dll	*now;
+	int	x;
+
+	while (admb->head)
+		ft_p(admb, adma, "pa\n");
+	now = adma->head;
+	x = ft_calc_rot(adma, 0);
+	while (now->i != 0)
+		now = now->next;
+	while (x-- > 0)
+	{
+		if (now->rev)
+			ft_rr(adma, "rra\n");
+		else
+			ft_r(adma, "ra\n");
+	}
+}
+
 void	mort(t_adm *adma, t_adm *admb)
 {
-	t_dll	*now[2];
+	t_dll	*now[3];
 	int		x;
-//	int		c;
 
 	x = 0;
 /*ft_p(adma, admb, "pb\n");
@@ -68,15 +121,29 @@ ft_p(adma, admb, "pb\n");
 ft_p(adma, admb, "pb\n");
 ft_p(adma, admb, "pb\n");*/
 	now[0] = adma->head;
+	now[2] = adma->head;
 	while (x++ < count_nb(adma))
 	{
 		now[1] = pos_b(now[0], admb);
-		printf(RED"\nnow[0]->n = [%d] to now[1]->n = [%d]\n"RESET, now[0]->n,
-			now[1]->n);
-//		ft_calc_rot(adma, 0);
+		now[0]->opa = ft_calc_rot(adma, now[0]->i);
+		now[0]->opb = ft_calc_rot(admb, now[1]->i);
+		now[0]->revb = now[1]->rev;
+		now[0]->opr = 0;
+		if (now[0]->rev == now[1]->rev)
+		{
+//			printf(CYAN"\nopa = [%d], opb = [%d]", now[0]->opa, now[0]->opb);
+			while (now[0]->opa > 0 && now[0]->opb > 0 && now[0]->opa-- != -1
+				&& now[0]->opb-- != -1)
+				now[0]->opr++;
+		}
+		now[0]->opt = (now[0]->opa + now[0]->opb + now[0]->opr);
+//		printf(RED"\nnow[0]->n = [%d] to now[1]->n = [%d]\n"GREEN"opa = [%d], opb = [%d], opr = [%d] || opt = [%d]\n", now[0]->n, now[1]->n, now[0]->opa, now[0]->opb, now[0]->opr, now[0]->opt);
+		if (now[0]->opt < now[2]->opt)
+			now[2] = now[0];
 		now[0] = now[0]->next;
 	}
-//	if (adma->head)
-//		return (mort(adma, admb));
-	return ;
+	ft_push_opti(adma, admb, now[2]);
+	if (adma->head)
+		return (mort(adma, admb));
+	return (do_final(adma, admb));
 }

@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:03:54 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/12 14:21:09 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/18 19:23:11 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,27 +90,3 @@ void	ft_p(t_adm *admfrom, t_adm *admto, char *s)
 	write(1, &s[0], 3);
 	return ;
 }
-
-/*void	ft_r(t_adm *adm)
-{
-	t_dll	*now;
-	int		y;
-
-	now = adm->head;
-	y = now->n;
-	now->n = adm->tail->n;
-	adm->tail->n = y;
-	return ;
-}
-
-void	ft_rr(t_adm *adm)
-{
-	t_dll	*now;
-	int		y;
-
-	now = adm->tail;
-	y = now->n;
-	now->n = adm->head->n;
-	adm->head->n = y;
-	return ;
-}*/

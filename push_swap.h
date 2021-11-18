@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 16:53:02 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/17 15:09:00 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/18 16:44:04 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@ typedef struct s_dll
 {
 	int				n;
 	int				i;
-	int				c;
-	int				r;
+	int				opa;
+	int				opb;
+	int				opr;
+	int				opt;
+	int				rev;
+	int				revb;
 	struct s_dll	*next;
 	struct s_dll	*prev;
 }	t_dll;

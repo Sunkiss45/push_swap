@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/16 14:22:46 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/18 19:29:31 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	pre_algo(t_adm *adma, t_adm *admb, char **str)
 	i += is_rot(adma);
 	if (!i)
 		algo_main(adma, admb);
-	list_display(adma, admb);
 	return (free_all(adma, admb, str, 0));
 }
 

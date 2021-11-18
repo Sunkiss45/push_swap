@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/15 16:42:50 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/18 19:29:16 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	list_inser(t_adm *adm, int add)
 	adm->tail = new;
 }
 
-/* ===== Test Zone ===== */
+/* ===== Test Zone =====
 
 void	list_display(t_adm *adma, t_adm *admb)
 {
@@ -198,4 +198,4 @@ void	list_display(t_adm *adma, t_adm *admb)
 	}
 	list_display(adma, admb);
 	return ;
-}
+}*/
