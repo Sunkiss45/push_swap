@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:35:43 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/16 13:33:19 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/19 17:41:16 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 void	ft_index(t_adm *adm)
 {
 	t_dll	*now[2];
+	int		x;
 
+	x = 0;
 	now[0] = adm->head;
-	while (now[0] != adm->tail)
+	while (x++ < count_nb(adm))
 	{
 		now[1] = adm->head;
 		while (now[1] != adm->tail)
@@ -30,15 +32,6 @@ void	ft_index(t_adm *adm)
 			now[0]->i++;
 		now[0] = now[0]->next;
 	}
-	now[1] = adm->head;
-	while (now[1] != adm->tail)
-	{
-		if (now[0]->n > now[1]->n)
-			now[0]->i++;
-		now[1] = now[1]->next;
-	}
-	if (now[0]->n > now[1]->n)
-		now[0]->i++;
 }
 
 int	is_rot(t_adm *adm)

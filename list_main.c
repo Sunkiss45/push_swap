@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/18 19:29:16 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/19 16:49:22 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	list_enter(t_adm *adm, char **str, int i)
 		num = ft_atoi(str[i]);
 		if (num > INT_MAX || num < INT_MIN)
 			return (1);
-		list_inser(adm, num);
+		if (list_inser(adm, num))
+			return (1);
 		i++;
 	}
 	return (0);
@@ -52,13 +53,13 @@ t_adm	*list_init_a(t_adm *adm, t_dll *dll, int first)
 	return (adm);
 }
 
-void	list_inser(t_adm *adm, int add)
+int		list_inser(t_adm *adm, int add)
 {
 	t_dll	*new;
 
 	new = malloc(sizeof(*new));
 	if (new == NULL)
-		return ;
+		return (1);
 	new->n = add;
 	new->i = 0;
 	new->next = adm->head;
@@ -66,6 +67,7 @@ void	list_inser(t_adm *adm, int add)
 	adm->head->prev = new;
 	adm->tail->next = new;
 	adm->tail = new;
+	return (0);
 }
 
 /* ===== Test Zone =====

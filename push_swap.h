@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 16:53:02 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/19 13:56:21 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/19 16:49:39 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_adm
 t_adm	*list_init_a(t_adm *adm, t_dll *dll, int first);
 t_adm	*list_init_b(t_adm *adm);
 int		list_enter(t_adm *adm, char **str, int i);
-void	list_inser(t_adm *adm, int add);
+int		list_inser(t_adm *adm, int add);
 int		list_delete(t_adm *adm, int x);
 void	list_display(t_adm *adma, t_adm *b);
 
