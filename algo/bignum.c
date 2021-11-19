@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mort.c                                             :+:      :+:    :+:   */
+/*   bignum.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 16:18:43 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/18 17:50:05 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/19 13:58:59 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,9 @@ void	ft_push_opti(t_adm *adma, t_adm *admb, t_dll *opti)
 	while (opti->opr-- > 0)
 	{
 		if (opti->rev)
-		{
-			write(1, "rrr\n", 4);
-			ft_rr(adma, NULL);
-			ft_rr(admb, NULL);
-		}
+			ft_drr(adma, admb, "rrr\n");
 		else
-		{
-			write(1, "rr\n", 3);
-			ft_r(adma, NULL);
-			ft_r(admb, NULL);
-		}
+			ft_dr(adma, admb, "rr\n");
 	}
 	while (opti->opa-- > 0)
 	{
@@ -93,7 +85,7 @@ void	ft_push_opti(t_adm *adma, t_adm *admb, t_dll *opti)
 void	do_final(t_adm *adma, t_adm *admb)
 {
 	t_dll	*now;
-	int	x;
+	int		x;
 
 	while (admb->head)
 		ft_p(admb, adma, "pa\n");
@@ -110,16 +102,8 @@ void	do_final(t_adm *adma, t_adm *admb)
 	}
 }
 
-void	mort(t_adm *adma, t_adm *admb)
+void	bignum(t_adm *adma, t_adm *admb, t_dll **now, int x)
 {
-	t_dll	*now[3];
-	int		x;
-
-	x = 0;
-/*ft_p(adma, admb, "pb\n");
-ft_p(adma, admb, "pb\n");
-ft_p(adma, admb, "pb\n");
-ft_p(adma, admb, "pb\n");*/
 	now[0] = adma->head;
 	now[2] = adma->head;
 	while (x++ < count_nb(adma))
@@ -131,19 +115,17 @@ ft_p(adma, admb, "pb\n");*/
 		now[0]->opr = 0;
 		if (now[0]->rev == now[1]->rev)
 		{
-//			printf(CYAN"\nopa = [%d], opb = [%d]", now[0]->opa, now[0]->opb);
 			while (now[0]->opa > 0 && now[0]->opb > 0 && now[0]->opa-- != -1
 				&& now[0]->opb-- != -1)
 				now[0]->opr++;
 		}
 		now[0]->opt = (now[0]->opa + now[0]->opb + now[0]->opr);
-//		printf(RED"\nnow[0]->n = [%d] to now[1]->n = [%d]\n"GREEN"opa = [%d], opb = [%d], opr = [%d] || opt = [%d]\n", now[0]->n, now[1]->n, now[0]->opa, now[0]->opb, now[0]->opr, now[0]->opt);
 		if (now[0]->opt < now[2]->opt)
 			now[2] = now[0];
 		now[0] = now[0]->next;
 	}
 	ft_push_opti(adma, admb, now[2]);
 	if (adma->head)
-		return (mort(adma, admb));
+		return (bignum(adma, admb, now, 0));
 	return (do_final(adma, admb));
 }

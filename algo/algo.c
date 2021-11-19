@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:07:33 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/16 14:23:18 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/19 13:55:25 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int	count_nb(t_adm *adm)
 
 void	algo_main(t_adm *adma, t_adm *admb)
 {
-	int	i;
+	t_dll	*now[3];
+	int		i;
 
-	i = count_nb(admb);
 	i = count_nb(adma);
 	if (i == 2)
 		return (ft_s(adma, "sa\n"));
@@ -46,6 +46,6 @@ void	algo_main(t_adm *adma, t_adm *admb)
 	else
 	{
 		ft_p(adma, admb, "pb\n");
-		return (mort(adma, admb));
+		return (bignum(adma, admb, now, 0));
 	}
 }

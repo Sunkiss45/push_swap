@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 16:53:02 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/18 16:44:04 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/19 13:56:21 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,13 @@ int		count_nb(t_adm *adm);
 void	algo_3(t_adm *adm);
 void	algo_4(t_adm *adma, t_adm *admb);
 void	algo_5(t_adm *adma, t_adm *admb);
-void	mort(t_adm *adma, t_adm *admb);
+void	bignum(t_adm *adma, t_adm *admb, t_dll **now, int x);
 
 void	ft_s(t_adm *adm, char *s);
 void	ft_r(t_adm *adm, char *s);
 void	ft_rr(t_adm *adm, char *s);
+void	ft_dr(t_adm *adma, t_adm *admb, char *s);
+void	ft_drr(t_adm *adma, t_adm *admb, char *s);
 void	ft_p(t_adm *admfrom, t_adm *admto, char *s);
 
 void	free_split(char **str);
