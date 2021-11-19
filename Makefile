@@ -6,18 +6,9 @@
 #    By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/12 14:53:30 by ebarguil          #+#    #+#              #
-#    Updated: 2021/11/19 13:59:51 by ebarguil         ###   ########.fr        #
+#    Updated: 2021/11/19 14:16:15 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-RED		=	"\033[1;31m"
-GREEN	=	"\033[1;32m"
-YELLOW	=	"\033[1;33m"
-BLUE	=	"\033[1;34m"
-PURPLE	=	"\033[1;35m"
-CYAN	=	"\033[1;36m"
-GREY	=	"\033[1;37m"
-RESET	=	"\033[0m"
 
 NAME	=	push_swap
 
@@ -43,7 +34,9 @@ N		=	norminette
 
 CC		=	gcc
 
-CF		=	-Wall -Wextra -Werror -fsanitize=address -g3
+CF		=	-Wall -Wextra -Werror
+
+CFS		=	-fsanitize=address -g3
 
 RM		=	rm -rf
 
@@ -59,6 +52,11 @@ fclean	:	clean
 			$(RM) $(NAME)
 
 re		:	fclean all
+
+f		:	$(OBJ)
+			$(CC) $(CF) $(CFS) -o $(NAME) $(SRC)
+
+fre		:	fclean f
 
 n		:
 			$(N)
