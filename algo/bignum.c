@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 16:18:43 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/19 13:58:59 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/19 21:20:27 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,30 +102,36 @@ void	do_final(t_adm *adma, t_adm *admb)
 	}
 }
 
+t_dll	**init_rdm(t_adm *adma, t_adm *admb, t_dll **now)
+{
+	now[1] = pos_b(now[0], admb);
+	now[0]->opa = ft_calc_rot(adma, now[0]->i);
+	now[0]->opb = ft_calc_rot(admb, now[1]->i);
+	now[0]->revb = now[1]->rev;
+	now[0]->opr = 0;
+	return (now);
+}
+
 void	bignum(t_adm *adma, t_adm *admb, t_dll **now, int x)
 {
-	now[0] = adma->head;
-	now[2] = adma->head;
-	while (x++ < count_nb(adma))
+	while (adma->head)
 	{
-		now[1] = pos_b(now[0], admb);
-		now[0]->opa = ft_calc_rot(adma, now[0]->i);
-		now[0]->opb = ft_calc_rot(admb, now[1]->i);
-		now[0]->revb = now[1]->rev;
-		now[0]->opr = 0;
-		if (now[0]->rev == now[1]->rev)
+		x = 0;
+		now[0] = adma->head;
+		now[2] = adma->head;
+		while (x++ < count_nb(adma))
 		{
-			while (now[0]->opa > 0 && now[0]->opb > 0 && now[0]->opa-- != -1
-				&& now[0]->opb-- != -1)
-				now[0]->opr++;
+			now = init_rdm(adma, admb, now);
+			if (now[0]->rev == now[1]->rev)
+				while (now[0]->opa > 0 && now[0]->opb > 0 
+					&& now[0]->opa-- != -1 && now[0]->opb-- != -1)
+					now[0]->opr++;
+			now[0]->opt = (now[0]->opa + now[0]->opb + now[0]->opr);
+			if (now[0]->opt < now[2]->opt)
+				now[2] = now[0];
+			now[0] = now[0]->next;
 		}
-		now[0]->opt = (now[0]->opa + now[0]->opb + now[0]->opr);
-		if (now[0]->opt < now[2]->opt)
-			now[2] = now[0];
-		now[0] = now[0]->next;
+		ft_push_opti(adma, admb, now[2]);
 	}
-	ft_push_opti(adma, admb, now[2]);
-	if (adma->head)
-		return (bignum(adma, admb, now, 0));
-	return (do_final(adma, admb));
+	do_final(adma, admb);
 }
