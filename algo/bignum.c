@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 16:18:43 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/19 21:20:27 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/20 18:38:55 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int	ft_calc_rot(t_adm *adm, int i)
 
 	now = adm->head;
 	op = 0;
-	while (i != now->i && op++ != -1)
+	while (now->i != i && op++ != -1)
 		now = now->next;
 	now->rev = 0;
 	if (op > (count_nb(adm) / 2))
 	{
 		now = adm->head;
 		op = 0;
-		while (i != now->i && op++ != -1)
+		while (now->i != i && op++ != -1)
 			now = now->prev;
 		now->rev = 1;
 	}
@@ -102,16 +102,6 @@ void	do_final(t_adm *adma, t_adm *admb)
 	}
 }
 
-t_dll	**init_rdm(t_adm *adma, t_adm *admb, t_dll **now)
-{
-	now[1] = pos_b(now[0], admb);
-	now[0]->opa = ft_calc_rot(adma, now[0]->i);
-	now[0]->opb = ft_calc_rot(admb, now[1]->i);
-	now[0]->revb = now[1]->rev;
-	now[0]->opr = 0;
-	return (now);
-}
-
 void	bignum(t_adm *adma, t_adm *admb, t_dll **now, int x)
 {
 	while (adma->head)
@@ -121,9 +111,13 @@ void	bignum(t_adm *adma, t_adm *admb, t_dll **now, int x)
 		now[2] = adma->head;
 		while (x++ < count_nb(adma))
 		{
-			now = init_rdm(adma, admb, now);
+			now[1] = pos_b(now[0], admb);
+			now[0]->opa = ft_calc_rot(adma, now[0]->i);
+			now[0]->opb = ft_calc_rot(admb, now[1]->i);
+			now[0]->revb = now[1]->rev;
+			now[0]->opr = 0;
 			if (now[0]->rev == now[1]->rev)
-				while (now[0]->opa > 0 && now[0]->opb > 0 
+				while (now[0]->opa > 0 && now[0]->opb > 0
 					&& now[0]->opa-- != -1 && now[0]->opb-- != -1)
 					now[0]->opr++;
 			now[0]->opt = (now[0]->opa + now[0]->opb + now[0]->opr);

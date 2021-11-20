@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 18:04:01 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/10/08 15:29:31 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/20 19:15:39 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ long	ft_atoi(char *s)
 		res = res * 10 + (s[i++] - 48);
 	if (n == 45)
 		res *= -1;
+	if (s[i] != '\0')
+		return (LONG_MAX);
 	return (res);
 }
 

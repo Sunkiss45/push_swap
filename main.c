@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/18 19:29:31 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/20 20:01:18 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,33 +41,12 @@ int	ft_tolong(char **s, int x)
 	return (0);
 }
 
-int	more_arg(char **str, t_adm *adma, t_adm *admb, t_dll *dll)
-{
-	long	num;
-
-	if (ft_check_more(str))
-		return (1);
-	if (ft_tolong(str, 1))
-		return (free_all(adma, admb, NULL, 1));
-	num = ft_atoi(str[1]);
-	if (num > INT_MAX || num < INT_MIN)
-		return (1);
-	adma = list_init_a(adma, dll, num);
-	admb = list_init_b(admb);
-	if (adma == NULL || admb == NULL || list_enter(adma, str, 2)
-		|| ft_doub(adma))
-		return (free_all(adma, admb, NULL, 1));
-	if (ft_sor(adma))
-		return (free_all(adma, admb, NULL, 0));
-	return (pre_algo(adma, admb, NULL));
-}
-
-int	one_arg(char *s, t_adm *adma, t_adm *admb, t_dll *dll)
+int	start_sort(char *s, t_adm *adma, t_adm *admb, t_dll *dll)
 {
 	char	**str;
 	long	num;
 
-	if (ft_check_one(s, 1))
+	if (ft_check(s))
 		return (1);
 	str = ft_split(s, " ");
 	if (ft_tolong(str, 0))
@@ -88,21 +67,28 @@ int	one_arg(char *s, t_adm *adma, t_adm *admb, t_dll *dll)
 int	main(int ac, char **av)
 {
 	t_dll	*dll;
-	t_adm	*adma;
-	t_adm	*admb;
+	t_adm	*adm[2];
+	char	*s;
 	int		e;
 
 	dll = NULL;
-	adma = NULL;
-	admb = NULL;
+	adm[0] = NULL;
+	adm[1] = NULL;
 	e = 0;
 	if (ac == 1)
 		return (0);
-	else if (ac == 2)
-		e = one_arg(av[1], adma, admb, dll);
-	else
-		e = more_arg(av, adma, admb, dll);
+	s = ft_strjoin(ac - 1, &av[1], " ");
+	if (s == NULL || ft_check_before(av))
+		e = free_strjoin(s, 1);
+	if (!e)
+	{
+		e = start_sort(s, adm[0], adm[1], dll);
+		free_strjoin(s, 0);
+	}
 	if (e)
+	{
 		write(2, "Error\n", 6);
+		return (1);
+	}
 	return (0);
 }

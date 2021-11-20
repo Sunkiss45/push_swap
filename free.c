@@ -6,11 +6,18 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 16:46:54 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/03 17:31:31 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/20 18:43:10 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	free_strjoin(char *s, int x)
+{
+	if (s)
+		free(s);
+	return (x);
+}
 
 int	list_delete(t_adm *adm, int x)
 {

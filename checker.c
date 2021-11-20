@@ -6,13 +6,24 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/09 16:13:27 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/20 20:03:30 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_check_one(char *s, int x)
+int	ft_check_before(char **str)
+{
+	int	x;
+
+	x = -1;
+	while (str[++x])
+		if (str[x][0] == '\0')
+			return (1);
+	return (0);
+}
+
+int	ft_check(char *s)
 {
 	int	i;
 	int	y;
@@ -31,27 +42,13 @@ int	ft_check_one(char *s, int x)
 				return (1);
 			i++;
 		}
-		else if (x && s[i + y] == 32)
+		else if (s[i + y] == 32)
 			i++;
 		else
 			return (1);
 	}
 	if (y == 0)
 		return (1);
-	return (0);
-}
-
-int	ft_check_more(char **s)
-{
-	int	i;
-
-	i = 1;
-	while (s[i])
-	{
-		if (ft_check_one(s[i], 0))
-			return (1);
-		i++;
-	}
 	return (0);
 }
 

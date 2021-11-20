@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/19 16:49:22 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/20 18:38:19 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_adm	*list_init_a(t_adm *adm, t_dll *dll, int first)
 	return (adm);
 }
 
-int		list_inser(t_adm *adm, int add)
+int	list_inser(t_adm *adm, int add)
 {
 	t_dll	*new;
 
