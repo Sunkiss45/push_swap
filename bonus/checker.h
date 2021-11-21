@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 16:53:02 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/20 23:39:42 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/21 23:07:02 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef CHECKER_H
+# define CHECKER_H
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -27,16 +27,11 @@
 # define GREY "\033[1;37m"
 # define RESET "\033[0m"
 
+# define BUFFER_SIZE 1024
+
 typedef struct s_dll
 {
 	int				n;
-	int				i;
-	int				opa;
-	int				opb;
-	int				opr;
-	int				opt;
-	int				rev;
-	int				revb;
 	struct s_dll	*next;
 	struct s_dll	*prev;
 }	t_dll;
@@ -54,24 +49,15 @@ int		list_inser(t_adm *adm, int add);
 
 void	list_display(t_adm *adma, t_adm *b);
 
-void	algo_main(t_adm *adma, t_adm *admb);
-void	ft_index(t_adm *adm);
-int		is_rot(t_adm *adm);
-int		is_sorr(t_adm *adma, t_adm *admb);
-int		pre_algo(t_adm *adma, t_adm *admb, char **str);
-
 int		count_nb(t_adm *adm);
-void	algo_3(t_adm *adm);
-void	algo_4(t_adm *adma, t_adm *admb);
-void	algo_5(t_adm *adma, t_adm *admb);
-void	bignum(t_adm *adma, t_adm *admb, t_dll **now, int x);
 
-void	ft_s(t_adm *adm, char *s);
-void	ft_r(t_adm *adm, char *s);
-void	ft_rr(t_adm *adm, char *s);
-void	ft_dr(t_adm *adma, t_adm *admb, char *s);
-void	ft_drr(t_adm *adma, t_adm *admb, char *s);
-void	ft_p(t_adm *admfrom, t_adm *admto, char *s);
+int		ft_s(t_adm *adm, char *s);
+int		ft_r(t_adm *adm, char *s);
+int		ft_rr(t_adm *adm, char *s);
+int		ft_ds(t_adm *adma, t_adm *admb, char *s);
+int		ft_dr(t_adm *adma, t_adm *admb, char *s);
+int		ft_drr(t_adm *adma, t_adm *admb, char *s);
+int		ft_p(t_adm *admfrom, t_adm *admto, char *s);
 
 void	free_split(char **str);
 int		free_strjoin(char *s, int x);
@@ -82,11 +68,18 @@ int		ft_check_before(char **str);
 int		ft_check(char *s);
 int		ft_doub(t_adm *adm);
 int		ft_sor(t_adm *adm);
-int		ft_sorr(t_adm *adm);
 
 char	*ft_strjoin(int size, char **strs, char *sep);
 char	**ft_split(char *str, char *charset);
 long	ft_atoi(char *s);
 int		ft_strlen(char *s);
+
+int		get_next_line(int fd, char **line);
+int		ft_check_n(char *str);
+char	*ft_saver(char *str);
+char	*ft_strcut_gnl(char *str);
+int		ft_strlen(char *s);
+int		ft_strn(char *s);
+char	*ft_strjoin_gnl(char *s1, char *s2);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/21 15:58:21 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/21 23:13:37 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 int	list_enter(t_adm *adm, char **str, int i)
 {
@@ -47,7 +47,6 @@ t_adm	*list_init_a(t_adm *adm, t_dll *dll, int first)
 	adm->head = dll;
 	adm->tail = dll;
 	dll->n = first;
-	dll->i = 0;
 	dll->next = adm->head;
 	dll->prev = adm->tail;
 	return (adm);
@@ -61,7 +60,6 @@ int	list_inser(t_adm *adm, int add)
 	if (new == NULL)
 		return (1);
 	new->n = add;
-	new->i = 0;
 	new->next = adm->head;
 	new->prev = adm->tail;
 	adm->head->prev = new;
@@ -70,12 +68,11 @@ int	list_inser(t_adm *adm, int add)
 	return (0);
 }
 
-/* ===== Test Zone =====
+/* ===== Test Zone ===== */
 
 void	list_display(t_adm *adma, t_adm *admb)
 {
 	t_dll	*now;
-	char	buf[1024];
 	int		i;
 
 	if (adma == NULL)
@@ -162,42 +159,5 @@ void	list_display(t_adm *adma, t_adm *admb)
 		printf(RED"NULL\n");
 
 	printf(PURPLE"\n");
-	read(0, buf, 4);
-	i = 0;
-	if (buf[0] == 's')
-	{
-		if (buf[1] == 't')
-		{
-			if (buf[2] == 'o')
-				if (buf[3] == 'p')
-					return ;
-		}
-		else if (buf[1] == 'a')
-			ft_s(adma, "sa\n");
-		else if (buf[1] == 'b')
-			ft_s(admb, "sb\n");
-	}
-	else if (buf[0] == 'r')
-	{
-		if (buf[1] == 'a')
-			ft_r(adma, "ra\n");
-		else if (buf[1] == 'b')
-			ft_r(admb, "rb\n");
-		else if (buf[1] == 'r')
-		{
-			if (buf[2] == 'a')
-				ft_rr(adma, "rra\n");
-			else if (buf[2] == 'b')
-				ft_rr(admb, "rrb\n");
-		}
-	}
-	else if (buf[0] == 'p')
-	{
-		if (buf[1] == 'a')
-			ft_p(admb, adma, "pa\n");
-		else if (buf[1] == 'b')
-			ft_p(adma, admb, "pb\n");
-	}
-	list_display(adma, admb);
 	return ;
-}*/
+}

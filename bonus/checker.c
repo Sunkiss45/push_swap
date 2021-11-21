@@ -6,11 +6,11 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/20 23:40:28 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/21 18:33:02 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 int	ft_check_before(char **str)
 {
@@ -82,18 +82,6 @@ int	ft_sor(t_adm *adm)
 	while (now->next != adm->head && now->n < now->next->n)
 		now = now->next;
 	if (now->next == adm->head)
-		return (1);
-	return (0);
-}
-
-int	ft_sorr(t_adm *adm)
-{
-	t_dll	*now;
-
-	now = adm->tail;
-	while (now->prev != adm->tail && now->n < now->prev->n)
-		now = now->prev;
-	if (now->prev == adm->tail)
 		return (1);
 	return (0);
 }
