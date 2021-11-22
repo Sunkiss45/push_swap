@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/20 23:40:28 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/22 14:43:06 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,23 @@
 
 int	ft_check_before(char **str)
 {
-	int	x;
+	int	x[3];
 
-	x = -1;
-	while (str[++x])
-		if (str[x][0] == '\0')
+	x[0] = -1;
+	while (str[++x[0]])
+		if (str[x[0]][0] == '\0')
 			return (1);
+	x[0] = 0;
+	while (str[++x[0]])
+	{
+		x[1] = -1;
+		x[2] = 0;
+		while (str[x[0]][++x[1]])
+			if (str[x[0]][x[1]] >= 48 && str[x[0]][x[1]] <= 57)
+				x[2]++;
+		if (!x[2])
+			return (1);
+	}
 	return (0);
 }
 

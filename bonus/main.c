@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/22 11:57:52 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/22 14:10:43 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ int	pre_inst(t_adm **adm, char **str)
 	int		ret;
 
 	ret = 0;
-	if (count_nb(adm[0]) == 1)
-		return (free_all(adm, str, line, 0));
 	ret = get_next_line(0, &line);
 	if (instru(line, adm[0], adm[1]) || (ret == 0 && line[0] != '\0'))
 		return (free_all(adm, str, line, 1));
