@@ -6,7 +6,7 @@
 #    By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/12 14:53:30 by ebarguil          #+#    #+#              #
-#    Updated: 2021/11/20 18:39:35 by ebarguil         ###   ########.fr        #
+#    Updated: 2021/11/22 11:43:36 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,4 +63,46 @@ n		:
 
 perso	: fclean n all clean
 
-.PHONY	:	all fclean clean re n perso
+
+# ================================ #
+# ========== MAKE BONUS ========== #
+# ================================ #
+
+
+NAMEB	=	checker
+
+SRCB	=	bonus/main.c \
+			bonus/list_main.c \
+			bonus/free.c \
+			bonus/ope.c \
+			bonus/opesup.c \
+			bonus/checker.c \
+			bonus/instru.c \
+			bonus/gnl/get_next_line.c \
+			bonus/gnl/get_next_line_utils.c \
+			bonus/utils/ft_atoi.c \
+			bonus/utils/ft_split.c \
+			bonus/utils/ft_strlen.c \
+			bonus/utils/ft_strjoin.c \
+
+OBJB	=	$(SRCB:.c=.o)
+
+bonus	:	$(NAMEB)
+
+$(NAMEB):	$(OBJB)
+			$(CC) $(CF) -o $(NAMEB) $(SRCB)
+
+bclean	:
+			$(RM) $(OBJB)
+
+bfclean	:	bclean
+			$(RM) $(NAMEB)
+
+bre		:	bfclean bonus
+
+bf		:	$(OBJB)
+			$(CC) $(CF) $(CFS) -o $(NAMEB) $(SRCB)
+
+bfre	:	bfclean bf
+
+.PHONY	:	all fclean clean re n perso bonus bclean fbclean bre bf bfre

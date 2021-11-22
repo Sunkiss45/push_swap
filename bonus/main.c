@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/21 23:13:10 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/22 11:27:51 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,70 +29,31 @@ int	count_nb(t_adm *adm)
 	return (i);
 }
 
-int	cmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	if (s1 && s2)
-		while (s1[i] == s2[i] && (s1[i] != '\0' || s2[i] != '\0'))
-			i++;
-	return (s1[i] - s2[i]);
-}
-
-int	instru(char *s, t_adm *adma, t_adm *admb)
-{
-	if (!cmp(s, "\0"))
-		return (0);
-	else if (!cmp(s, "ss"))
-		return (ft_ds(adma, admb, NULL));
-	else if (!cmp(s, "sa"))
-		return (ft_s(adma, NULL));
-	else if (!cmp(s, "sb"))
-		return (ft_s(admb, NULL));
-	else if (!cmp(s, "rr"))
-		return (ft_dr(adma, admb, NULL));
-	else if (!cmp(s, "ra"))
-		return (ft_r(adma, NULL));
-	else if (!cmp(s, "rb"))
-		return (ft_r(admb, NULL));
-	else if (!cmp(s, "rrr"))
-		return (ft_drr(adma, admb, NULL));
-	else if (!cmp(s, "rra"))
-		return (ft_rr(adma, NULL));
-	else if (!cmp(s, "rrb"))
-		return (ft_rr(admb, NULL));
-	else if (!cmp(s, "pa"))
-		return (ft_p(admb, adma, NULL));
-	else if (!cmp(s, "pb"))
-		return (ft_p(adma, admb, NULL));
-	return (1);
-}
-
-int	pre_inst(t_adm *adma, t_adm *admb, char **str)
+int	pre_inst(t_adm **adm, char **str)
 {
 	char	*line;
 	int		ret;
 
 	ret = 0;
-	if (count_nb(adma) == 1)
-		return (free_all(adma, admb, str, 0));
+	if (count_nb(adm[0]) == 1)
+		return (free_all(adm, str, line, 0));
 	ret = get_next_line(1, &line);
-	printf(GREEN"[%s]"RESET"\n", line);
-	if (instru(line, adma, admb) || (ret == 0 && line[0] != '\0'))
-		return (free_all(adma, admb, str, 1));
-	list_display(adma, admb);
+	if (instru(line, adm[0], adm[1]) || (ret == 0 && line[0] != '\0'))
+		return (free_all(adm, str, line, 1));
 	free(line);
 	while (ret == 1)
 	{
 		ret = get_next_line(1, &line);
-		printf(GREEN"[%s]"RESET"\n", line);
-		if (instru(line, adma, admb) || (ret == 0 && line[0] != '\0'))
-			return (free_all(adma, admb, str, 1));
-		list_display(adma, admb);
+		if (instru(line, adm[0], adm[1]) || (ret == 0 && line[0] != '\0'))
+			return (free_all(adm, str, line, 1));
 		free(line);
 	}
-	return (free_all(adma, admb, str, 0));
+	if (count_nb(adm[0]) != adm[0]->base || count_nb(adm[1])
+		|| !ft_sor(adm[0]))
+		write(1, "KO\n", 3);
+	else
+		write(1, "OK\n", 3);
+	return (free_all(adm, str, NULL, 0));
 }
 
 int	ft_tolong(char **s, int x)
@@ -108,7 +69,7 @@ int	ft_tolong(char **s, int x)
 	return (0);
 }
 
-int	start_sort(char *s, t_adm *adma, t_adm *admb, t_dll *dll)
+int	start_sort(char *s, t_adm **adm, t_dll *dll)
 {
 	char	**str;
 	long	num;
@@ -117,18 +78,17 @@ int	start_sort(char *s, t_adm *adma, t_adm *admb, t_dll *dll)
 		return (1);
 	str = ft_split(s, " ");
 	if (ft_tolong(str, 0))
-		return (free_all(adma, admb, str, 1));
+		return (free_all(adm, str, NULL, 1));
 	num = ft_atoi(str[0]);
 	if (num > INT_MAX || num < INT_MIN)
-		return (free_all(adma, admb, str, 1));
-	adma = list_init_a(adma, dll, num);
-	admb = list_init_b(admb);
-	if (adma == NULL || admb == NULL || list_enter(adma, str, 1)
-		|| ft_doub(adma))
-		return (free_all(adma, admb, str, 1));
-	if (ft_sor(adma))
-		return (free_all(adma, admb, str, 0));
-	return (pre_inst(adma, admb, str));
+		return (free_all(adm, str, NULL, 1));
+	adm[0] = list_init_a(adm[0], dll, num);
+	adm[1] = list_init_b(adm[0]);
+	if (adm[0] == NULL || adm[1] == NULL || list_enter(adm[0], str, 1)
+		|| ft_doub(adm[0]))
+		return (free_all(adm, str, NULL, 1));
+	adm[0]->base = count_nb(adm[0]);
+	return (pre_inst(adm, str));
 }
 
 int	main(int ac, char **av)
@@ -149,7 +109,7 @@ int	main(int ac, char **av)
 		e = free_strjoin(s, 1);
 	if (!e)
 	{
-		e = start_sort(s, adm[0], adm[1], dll);
+		e = start_sort(s, adm, dll);
 		free_strjoin(s, 0);
 	}
 	if (e)
