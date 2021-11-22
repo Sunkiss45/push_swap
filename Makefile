@@ -6,7 +6,7 @@
 #    By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/12 14:53:30 by ebarguil          #+#    #+#              #
-#    Updated: 2021/11/22 11:43:36 by ebarguil         ###   ########.fr        #
+#    Updated: 2021/11/22 12:01:39 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ fre		:	fclean f
 n		:
 			$(N)
 
-perso	: fclean n all clean
+perso	:	fre bfre allcl
 
 
 # ================================ #
@@ -104,5 +104,14 @@ bf		:	$(OBJB)
 			$(CC) $(CF) $(CFS) -o $(NAMEB) $(SRCB)
 
 bfre	:	bfclean bf
+
+
+# ================================ #
+# ========== UNIQUE FNC ========== #
+# ================================ #
+
+allcl	:	clean bclean
+
+allfcl	:	fclean bfclean
 
 .PHONY	:	all fclean clean re n perso bonus bclean fbclean bre bf bfre
