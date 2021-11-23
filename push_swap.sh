@@ -49,6 +49,66 @@ echo -e "\n${Reset}"
 echo -e "${Blue} ==[|]==  TESTS ERROR  ==[|]==\n${Reset}";
 echo -e "\n${Green}ESPECTED RETURN VALUE -> \"Error$\"\n${Reset}"
 
+echo -e "${Blue} -- ${Yellow}./push_swap not good ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap not good >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+echo -e "${Blue} -- ${Yellow}./push_swap \"over cringe\" ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap "over cringe" >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+echo -e "${Blue} -- ${Yellow}./push_swap 96 \"just do error\" -69 ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap 96 "just do Error" -69 >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+echo -e "${Blue} -- ${Yellow}./push_swap \"86 15 28 hey 8555 -9555\" ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap "86 15 28 hey 8555 -9555" >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
 echo -e "${Blue} -- ${Yellow}./push_swap \"\" ${Blue}-- ${Reset}";
 rm -rf tmp;
 ./push_swap "" >/dev/null 2>tmp;
@@ -60,7 +120,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -75,7 +135,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -90,7 +150,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -105,7 +165,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -120,7 +180,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -135,7 +195,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -150,7 +210,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -165,7 +225,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -180,7 +240,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -195,7 +255,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -210,7 +270,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -225,7 +285,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -240,7 +300,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -255,7 +315,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -270,7 +330,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -285,7 +345,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -300,7 +360,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -315,7 +375,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -330,7 +390,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -345,7 +405,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -360,7 +420,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -375,7 +435,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -390,7 +450,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -405,7 +465,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -420,7 +480,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -435,7 +495,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -450,7 +510,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -465,7 +525,37 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+echo -e "${Blue} -- ${Yellow}./push_swap 0 8 2 \"-\" ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap 0 8 2 "-" >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+echo -e "${Blue} -- ${Yellow}./push_swap 0 8 2 \"+\" ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap 0 8 2 "+" >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -480,7 +570,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
@@ -495,7 +585,7 @@ if [ ${nln} != 1 ]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
 elif [[ "$ret" != "$esp" ]]; then
 	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [ ${nln} == 1 ]; then
+elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
