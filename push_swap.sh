@@ -109,9 +109,9 @@ elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
-echo -e "${Blue} -- ${Yellow}./push_swap \"\" ${Blue}-- ${Reset}";
+echo -e "${Blue} -- ${Yellow}./push_swap \"86no\" -9858 \"899here\" ${Blue}-- ${Reset}";
 rm -rf tmp;
-./push_swap "" >/dev/null 2>tmp;
+./push_swap "86no" -9858 "899here" >/dev/null 2>tmp;
 chmod 777 tmp;
 nln=$(cat tmp | wc -l)
 ret=$(cat -e tmp)
@@ -124,9 +124,9 @@ elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
-echo -e "${Blue} -- ${Yellow}./push_swap 1 \"\" ${Blue}-- ${Reset}";
+echo -e "${Blue} -- ${Yellow}./push_swap -hello \"8 6 5 4 855 -88\" ${Blue}-- ${Reset}";
 rm -rf tmp;
-./push_swap 1 "" >/dev/null 2>tmp;
+./push_swap -hello "8 6 5 4 855 -88" >/dev/null 2>tmp;
 chmod 777 tmp;
 nln=$(cat tmp | wc -l)
 ret=$(cat -e tmp)
@@ -139,99 +139,9 @@ elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
-echo -e "${Blue} -- ${Yellow}./push_swap 56 \"\" 85 47 \"\" ${Blue}-- ${Reset}";
+echo -e "${Blue} -- ${Yellow}./push_swap 558 55 -889 \"5688you855\" can \"-do88\" it ${Blue}-- ${Reset}";
 rm -rf tmp;
-./push_swap 56 "" 85 47 "" >/dev/null 2>tmp;
-chmod 777 tmp;
-nln=$(cat tmp | wc -l)
-ret=$(cat -e tmp)
-esp="Error$"
-if [ ${nln} != 1 ]; then
-	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [[ "$ret" != "$esp" ]]; then
-	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [[ "$ret" == "$esp" ]]; then
-	echo -e "${Green}OK\n";
-fi
-
-echo -e "${Blue} -- ${Yellow}./push_swap \"\" 56 85 47 \"\" ${Blue}-- ${Reset}";
-rm -rf tmp;
-./push_swap "" 56 85 47 "" >/dev/null 2>tmp;
-chmod 777 tmp;
-nln=$(cat tmp | wc -l)
-ret=$(cat -e tmp)
-esp="Error$"
-if [ ${nln} != 1 ]; then
-	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [[ "$ret" != "$esp" ]]; then
-	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [[ "$ret" == "$esp" ]]; then
-	echo -e "${Green}OK\n";
-fi
-
-echo -e "${Blue} -- ${Yellow}./push_swap \"\" \"\" \"\" ${Blue}-- ${Reset}";
-rm -rf tmp;
-./push_swap "" "" "" >/dev/null 2>tmp;
-chmod 777 tmp;
-nln=$(cat tmp | wc -l)
-ret=$(cat -e tmp)
-esp="Error$"
-if [ ${nln} != 1 ]; then
-	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [[ "$ret" != "$esp" ]]; then
-	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [[ "$ret" == "$esp" ]]; then
-	echo -e "${Green}OK\n";
-fi
-
-echo -e "${Blue} -- ${Yellow}./push_swap \"     \" ${Blue}-- ${Reset}";
-rm -rf tmp;
-./push_swap "     " >/dev/null 2>tmp;
-chmod 777 tmp;
-nln=$(cat tmp | wc -l)
-ret=$(cat -e tmp)
-esp="Error$"
-if [ ${nln} != 1 ]; then
-	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [[ "$ret" != "$esp" ]]; then
-	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [[ "$ret" == "$esp" ]]; then
-	echo -e "${Green}OK\n";
-fi
-
-echo -e "${Blue} -- ${Yellow}./push_swap 1 \"     \" ${Blue}-- ${Reset}";
-rm -rf tmp;
-./push_swap 1 "     " >/dev/null 2>tmp;
-chmod 777 tmp;
-nln=$(cat tmp | wc -l)
-ret=$(cat -e tmp)
-esp="Error$"
-if [ ${nln} != 1 ]; then
-	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [[ "$ret" != "$esp" ]]; then
-	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [[ "$ret" == "$esp" ]]; then
-	echo -e "${Green}OK\n";
-fi
-
-echo -e "${Blue} -- ${Yellow}./push_swap 56 \"     \" 85 47 \"     \" ${Blue}-- ${Reset}";
-rm -rf tmp;
-./push_swap 56 "     " 85 47 "     " >/dev/null 2>tmp;
-chmod 777 tmp;
-nln=$(cat tmp | wc -l)
-ret=$(cat -e tmp)
-esp="Error$"
-if [ ${nln} != 1 ]; then
-	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [[ "$ret" != "$esp" ]]; then
-	echo -e "${Red}KO | Espected => \"$esp\"\n";
-elif [[ "$ret" == "$esp" ]]; then
-	echo -e "${Green}OK\n";
-fi
-
-echo -e "${Blue} -- ${Yellow}./push_swap \"     \" 56 85 47 \"     \" ${Blue}-- ${Reset}";
-rm -rf tmp;
-./push_swap "     " 56 85 47 "     " >/dev/null 2>tmp;
+./push_swap 558 55 -889 "5688you855" can "-do88" it >/dev/null 2>tmp;
 chmod 777 tmp;
 nln=$(cat tmp | wc -l)
 ret=$(cat -e tmp)
@@ -304,6 +214,21 @@ elif [[ "$ret" == "$esp" ]]; then
 	echo -e "${Green}OK\n";
 fi
 
+echo -e "${Blue} -- ${Yellow}./push_swap -1 -1 ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap -1 -1 >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
 echo -e "${Blue} -- ${Yellow}./push_swap -1 6 8 5 7 -1 ${Blue}-- ${Reset}";
 rm -rf tmp;
 ./push_swap -1 6 8 5 7 -1 >/dev/null 2>tmp;
@@ -337,6 +262,66 @@ fi
 echo -e "${Blue} -- ${Yellow}./push_swap 86 57 125 -4 -4 ${Blue}-- ${Reset}";
 rm -rf tmp;
 ./push_swap 86 57 125 -4 -4 >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+echo -e "${Blue} -- ${Yellow}./push_swap 0 18 526 -85 0 ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap 0 18 526 -85 0 >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+echo -e "${Blue} -- ${Yellow}./push_swap -0 18 526 -85 +0 ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap -0 18 526 -85 +0 >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+echo -e "${Blue} -- ${Yellow}./push_swap +0 18 526 -85 +0 ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap +0 18 526 -85 +0 >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+echo -e "${Blue} -- ${Yellow}./push_swap -0 18 526 -85 -0 ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap -0 18 526 -85 -0 >/dev/null 2>tmp;
 chmod 777 tmp;
 nln=$(cat tmp | wc -l)
 ret=$(cat -e tmp)
@@ -577,6 +562,161 @@ fi
 echo -e "${Blue} -- ${Yellow}./push_swap \"- -\" 8 2 5 ${Blue}-- ${Reset}";
 rm -rf tmp;
 ./push_swap "- -" 8 2 5 >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+rm -rf tmp;
+
+echo -e "\n";
+echo -e "${Red}██████╗ ██╗   ██╗███████╗██╗  ██╗    ███████╗██╗    ██╗ █████╗ ██████╗";
+echo -e "██╔══██╗██║   ██║██╔════╝██║  ██║    ██╔════╝██║    ██║██╔══██╗██╔══██╗";
+echo -e "██████╔╝██║   ██║███████╗███████║    ███████╗██║ █╗ ██║███████║██████╔╝";
+echo -e "██╔═══╝ ██║   ██║╚════██║██╔══██║    ╚════██║██║███╗██║██╔══██║██╔═══╝";
+echo -e "██║     ╚██████╔╝███████║██║  ██║    ███████║╚███╔███╔╝██║  ██║██║";
+echo -e "╚═╝      ╚═════╝ ╚══════╝╚═╝  ╚═╝    ╚══════╝ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝${Reset}";
+echo -e "\n";
+
+echo -e "${Red}"
+make re;
+make clean;
+echo -e "\n${Reset}"
+
+echo -e "${Red} ==[|]==  TESTS ERROR EXTREME  ==[|]==\n${Reset}";
+echo -e "\n${Green}RETURN VALUE OF CHECKER_LINUX/MAC -> \"Error$\"\n${Reset}"
+
+
+echo -e "${Blue} -- ${Yellow}./push_swap \"\" ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap "" >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+echo -e "${Blue} -- ${Yellow}./push_swap 1 \"\" ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap 1 "" >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+echo -e "${Blue} -- ${Yellow}./push_swap 56 \"\" 85 47 \"\" ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap 56 "" 85 47 "" >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+echo -e "${Blue} -- ${Yellow}./push_swap \"\" 56 85 47 \"\" ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap "" 56 85 47 "" >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+echo -e "${Blue} -- ${Yellow}./push_swap \"\" \"\" \"\" ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap "" "" "" >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+echo -e "${Blue} -- ${Yellow}./push_swap \"     \" ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap "     " >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+echo -e "${Blue} -- ${Yellow}./push_swap 1 \"     \" ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap 1 "     " >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+echo -e "${Blue} -- ${Yellow}./push_swap 56 \"     \" 85 47 \"     \" ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap 56 "     " 85 47 "     " >/dev/null 2>tmp;
+chmod 777 tmp;
+nln=$(cat tmp | wc -l)
+ret=$(cat -e tmp)
+esp="Error$"
+if [ ${nln} != 1 ]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" != "$esp" ]]; then
+	echo -e "${Red}KO | Espected => \"$esp\"\n";
+elif [[ "$ret" == "$esp" ]]; then
+	echo -e "${Green}OK\n";
+fi
+
+echo -e "${Blue} -- ${Yellow}./push_swap \"     \" 56 85 47 \"     \" ${Blue}-- ${Reset}";
+rm -rf tmp;
+./push_swap "     " 56 85 47 "     " >/dev/null 2>tmp;
 chmod 777 tmp;
 nln=$(cat tmp | wc -l)
 ret=$(cat -e tmp)

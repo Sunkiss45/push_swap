@@ -6,7 +6,7 @@
 /*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2021/11/21 15:58:21 by ebarguil         ###   ########.fr       */
+/*   Updated: 2021/11/25 13:24:02 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,13 @@ t_adm	*list_init_a(t_adm *adm, t_dll *dll, int first)
 	adm = malloc(sizeof(*adm));
 	dll = malloc(sizeof(*dll));
 	if (adm == NULL || dll == NULL)
+	{
+		if (dll != NULL)
+			free(dll);
+		if (adm != NULL)
+			free(adm);
 		return (NULL);
+	}
 	adm->head = dll;
 	adm->tail = dll;
 	dll->n = first;
